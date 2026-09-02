@@ -30,7 +30,7 @@ app.get("/dash/register", (req, res) => {
 });
 
 app.get("/", (req, res) => {
-    res.render("dashboard/dash")
+    res.render("dashboard/dash");
 });
 
 // farmer product upoload
