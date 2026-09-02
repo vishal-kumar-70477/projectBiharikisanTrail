@@ -537,7 +537,7 @@ async function viewOrders(req,res){
             return res.status(401).json({
                 success:false,
                 message:"Refresh token not found"
-            });
+            })
         }
 
         const decoded = jwt.verify(refreshToken, config.JWT_SECRET_KEY);
