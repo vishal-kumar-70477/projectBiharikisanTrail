@@ -39,7 +39,7 @@ app.get("/farmerProduct", async (req, res) => {
         const refreshToken = req.cookies.refreshToken;
 
         if (!refreshToken) {
-            return res.redirect
+            return res.redirect("/");
         }
 
         const decoded = jwt.verify(
