@@ -26,7 +26,7 @@ app.use("/biharikisan/seller",productsRouter);
 app.use("/biharikisan/buyer",buyerFeaturesRouter);
 
 app.get("/dash/register", (req, res) => {
-    res.render("login/register");
+    res.render("login/register")
 });
 
 app.get("/", (req, res) => {
