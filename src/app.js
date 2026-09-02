@@ -22,7 +22,7 @@ app.use(express.json());
 app.use(cookieParser());
 app.use("/biharikisan/auth",buyerAuthRouter);
 // seller feature routes
-app.use("/biharikisan/seller",productsRouter)
+app.use("/biharikisan/seller",productsRouter);
 app.use("/biharikisan/buyer",buyerFeaturesRouter)
 
 app.get("/dash/register", (req, res) => {
