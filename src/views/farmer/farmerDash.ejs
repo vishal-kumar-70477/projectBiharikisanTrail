@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BIHARI KISAN — Farmer Dashboard</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700;800&family=Inter:wght@400;500;600;700&family=Noto+Sans+Devanagari:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/css/farmerCss/farmerDash.css">
+<script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+<link
+  href="https://cdn.jsdelivr.net/npm/remixicon@4.9.0/fonts/remixicon.css"
+  rel="stylesheet"
+/>
+</head>
+<body>
+<div class="shell">
+  <aside class="sidebar" id="sidebar">
+    <div class="brand-block">
+      <div class="brand"><span class="leaf">🌾</span> BIHARI KISAN</div>
+      <div class="tagline">Farmer Dashboard</div>
+    </div>
+    <nav class="nav-scroll">
+
+  <a class="nav-item active" href="/farmerDash">
+    <i class="ri-dashboard-line"></i>
+    <span class="label">Dashboard</span>
+  </a>
+
+  <a class="nav-item" href="#">
+    <i data-lucide="sprout"></i>
+    <span class="label">My Farm</span>
+  </a>
+
+  <a class="nav-item" href="/farmerProduct">
+    <i data-lucide="shopping-basket"></i>
+    <span class="label">Sell My Crop</span>
+  </a>
+
+  <a class="nav-item" href="#">
+    <i data-lucide="cloud-sun"></i>
+    <span class="label">Weather &amp; Advisory</span>
+  </a>
+
+  <a class="nav-item" href="#">
+    <i data-lucide="droplets"></i>
+    <span class="label">Soil &amp; Irrigation</span>
+  </a>
+
+  <a class="nav-item" href="#">
+    <i data-lucide="line-chart"></i>
+    <span class="label">Market Prices</span>
+  </a>
+
+  <a class="nav-item" href="#">
+    <i data-lucide="landmark"></i>
+    <span class="label">Government Schemes</span>
+  </a>
+
+  <a class="nav-item" href="#">
+    <i data-lucide="life-buoy"></i>
+    <span class="label">Help &amp; Support</span>
+  </a>
+
+  <a class="nav-item" href="#">
+    <i data-lucide="settings"></i>
+    <span class="label">Settings</span>
+  </a>
+
+</nav>
+    <div class="sidebar-foot">
+      <a class="nav-item logout-item"  id="logoutBtn" href="#"><i data-lucide="log-out"></i><span class="label">Logout</span></a>
+    </div>
+  </aside>
+
+  <header class="topbar">
+    <button class="hamburger" id="hamburgerBtn"><i data-lucide="menu"></i></button>
+    <div class="search-wrap"><i data-lucide="search"></i><input type="text" placeholder="Search crops, schemes, tips..."></div>
+    <div class="top-actions">
+      <div class="weather-chip"><span>☀️</span><span>32°C   <%= data.address %></span></div>
+      <button class="icon-btn"><i data-lucide="bell"></i><span class="dot"></span></button>
+      <div class="profile-btn">
+    <div class="avatar">
+        <%= data.userName
+            .split(" ")
+            .map(name => name[0])
+            .join("")
+            .substring(0, 2)
+            .toUpperCase() %>
+    </div>
+</div>
+  </header>
+
+  <main class="main">
+    <section class="hero">
+      <div class="hero-left">
+        <div class="hero-greet">Welcome back, <span id="userName"> <%= data.userName %> </span> 👋</div>
+        <div class="hero-sub">Good Morning · <%= data.address %> · 3.2 acres registered</div>
+        <div class="hero-tags">
+          <div class="hero-tag"><i data-lucide="cloud-sun"></i> 32°C · Good day for irrigation</div>
+          <div class="hero-tag"><i data-lucide="sprout"></i> Wheat crop in Grain Filling stage</div>
+          <div class="hero-tag"><i data-lucide="landmark"></i> 1 new scheme you're eligible for</div>
+        </div>
+      </div>
+      <div class="hero-right">
+        <svg class="hero-illustration" viewBox="0 0 240 220" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <ellipse cx="120" cy="200" rx="100" ry="12" fill="rgba(0,0,0,0.08)"/>
+          <path d="M120 190 L120 90" stroke="#C8E6C9" stroke-width="6" stroke-linecap="round"/>
+          <path d="M120 100 C90 90 70 60 80 30 C105 40 120 65 120 100 Z" fill="#A5D6A7"/>
+          <path d="M120 110 C150 100 170 70 160 40 C135 50 120 75 120 110 Z" fill="#81C784"/>
+          <circle cx="120" cy="60" r="26" fill="#FFD54F" opacity="0.9"/>
+          <circle cx="120" cy="60" r="14" fill="#FFCA28"/>
+          <path d="M60 195 C70 150 90 130 120 130 C150 130 170 150 180 195 Z" fill="#8D6E63" opacity="0.55"/>
+        </svg>
+      </div>
+    </section>
+
+    <section class="stats-row">
+      <div class="stat-card"><div class="stat-icon"><i data-lucide="layout-grid"></i></div><div class="stat-value">3.2 acres</div><div class="stat-label">Total Land</div></div>
+      <div class="stat-card"><div class="stat-icon"><i data-lucide="sprout"></i></div><div class="stat-value" id="totalProductCount">0</div><div class="stat-label">Total Product</div></div>
+      <div class="stat-card"><div class="stat-icon"><i data-lucide="calendar-clock"></i></div><div class="stat-value">18 days</div><div class="stat-label">Next Harvest</div></div>
+      <div class="stat-card"><div class="stat-icon"><i data-lucide="landmark"></i></div><div class="stat-value">₹6,000</div><div class="stat-label">Scheme Benefits Claimed</div></div>
+    </section>
+
+    <!-- ===================== TOP PRODUCTS (live) ===================== -->
+    <section class="card" style="padding:20px;">
+      <div class="section-head">
+        <h2>Top Products</h2>
+        <a class="link" href="/farmerProduct">View all</a>
+      </div>
+      <div class="top-products-grid" id="topProductsGrid">
+        <div class="top-products-loading">Loading your products...</div>
+      </div>
+    </section>
+
+    <!-- ===================== ACTIVE DELIVERY ===================== -->
+    <section class="card" style="padding:20px;">
+      <div class="section-head">
+        <h2>Active Delivery</h2>
+        <a class="link" href="#">Delivery Tracking</a>
+      </div>
+      <!--
+        NOTE: no delivery backend/model exists yet, so this is a static
+        placeholder card. Swap this block for a real fetch once the
+        Delivery Tracking API is ready.
+      -->
+      <div class="delivery-card">
+        <div class="delivery-avatar">SY</div>
+        <div class="delivery-info">
+          <div class="delivery-title">Wheat 200kg — on the way</div>
+          <div class="delivery-sub">Driver: Suresh Yadav · ETA 25 min</div>
+        </div>
+        <a class="delivery-track-btn" href="#">Track</a>
+      </div>
+      <div class="delivery-note">Sample data — live delivery tracking coming soon.</div>
+    </section>
+
+    <!-- ===================== QUICK ACCESS ===================== -->
+    <section>
+      <div class="section-head">
+        <h2>Quick Access</h2>
+      </div>
+      <div class="quick-access-grid">
+        <a class="quick-access-card" href="/farmerProduct">
+          <div class="quick-access-icon"><i data-lucide="shopping-basket"></i></div>
+          <div>
+            <div class="quick-access-title">Sell My Crop</div>
+            <div class="quick-access-sub">Manage listings, sales &amp; more</div>
+          </div>
+        </a>
+        <a class="quick-access-card" href="#">
+          <div class="quick-access-icon"><i data-lucide="truck"></i></div>
+          <div>
+            <div class="quick-access-title">Delivery Tracking</div>
+            <div class="quick-access-sub">Live map for active orders</div>
+          </div>
+        </a>
+        <a class="quick-access-card is-disabled" href="#" title="Opens automatically when a delivery request is active">
+          <div class="quick-access-icon"><i data-lucide="car"></i></div>
+          <div>
+            <div class="quick-access-title">Driver Panel</div>
+            <div class="quick-access-sub">Opens when a delivery is active</div>
+          </div>
+        </a>
+      </div>
+    </section>
+  </main>
+</div>
+<script src="/js/farmerJs/farmerDash.js"></script>
+</body>
+</html>

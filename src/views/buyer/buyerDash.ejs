@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<title>BIHARI KISAN — Buyer Dashboard</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700;800&family=Inter:wght@400;500;600;700&family=Noto+Sans+Devanagari:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/css/buyerCss/buyerDash.css">
+<script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+</head>
+<body>
+<div class="shell">
+  <aside class="sidebar" id="sidebar">
+    <div class="brand-block">
+      <div class="brand"><span class="leaf">🌾</span> BIHARI KISAN</div>
+      <div class="tagline">Buyer Dashboard</div>
+    </div>
+    <nav class="nav-scroll">
+      <a class="nav-item active" href="#"><i data-lucide="layout-grid"></i><span class="label">Dashboard</span></a>
+      <a class="nav-item" href="/allproduct"><i data-lucide="shopping-basket"></i><span class="label">Browse Crops</span></a>
+      <a class="nav-item" href="/buyer/myOrder">
+    <i data-lucide="clipboard-list"></i>
+    <span class="label">My Orders</span>
+</a>
+      <a class="nav-item" href="#"><i data-lucide="users"></i><span class="label">Saved Sellers</span></a>
+      <a class="nav-item" href="#"><i data-lucide="wallet"></i><span class="label">Payments</span></a>
+      <a class="nav-item" href="#"><i data-lucide="truck"></i><span class="label">Track Delivery</span></a>
+      <a class="nav-item" href="#"><i data-lucide="life-buoy"></i><span class="label">Help &amp; Support</span></a>
+      <a class="nav-item" href="#"><i data-lucide="settings"></i><span class="label">Settings</span></a>
+    </nav>
+    <div class="sidebar-foot">
+      <a class="nav-item logout-item"  id="logoutBtn" href="#"><i data-lucide="log-out"></i><span class="label">Logout</span></a>
+    </div>
+  </aside>
+
+  <!-- NEW: dim backdrop behind the open mobile sidebar -->
+  <div class="sidebar-backdrop" id="sidebarBackdrop"></div>
+
+  <header class="topbar">
+    <button class="hamburger" id="hamburgerBtn"><i data-lucide="menu"></i></button>
+    <div class="search-wrap"><i data-lucide="search"></i><input type="text" placeholder="Search crops, sellers..."></div>
+    <div class="top-actions">
+      <button class="icon-btn"><i data-lucide="bell"></i><span class="dot"></span></button>
+      <div class="profile-btn">
+    <div class="avatar">
+        <%= data.userName
+            .split(" ")
+            .map(name => name[0])
+            .join("")
+            .substring(0, 2)
+            .toUpperCase() %>
+    </div>
+</div>
+  </header>
+
+  <main class="main">
+    <section class="hero">
+      <div class="hero-left">
+       <div class="hero-greet">Welcome back, <span id="userName"> <%= data.userName %> </span> 👋</div>
+         <div class="hero-sub">Good Morning · <%= data.address %> · 3.2 acres registered</div>
+        <div class="hero-tags">
+          <div class="hero-tag"><i data-lucide="shield-check"></i> Verified sellers only</div>
+          <div class="hero-tag"><i data-lucide="banknote"></i> Direct payment, no middleman</div>
+          <div class="hero-tag"><i data-lucide="package"></i> 2 orders in transit</div>
+        </div>
+      </div>
+      <div class="hero-right">
+        <svg class="hero-illustration" viewBox="0 0 140 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <ellipse cx="70" cy="108" rx="52" ry="8" fill="rgba(255,255,255,0.15)"/>
+          <path d="M40 50h60l-7 46a8 8 0 01-8 7H55a8 8 0 01-8-7l-7-46z" fill="#fff" opacity="0.9"/>
+          <path d="M52 50c0-14 8-24 18-24s18 10 18 24" stroke="#fff" stroke-width="7" stroke-linecap="round" fill="none"/>
+          <circle cx="58" cy="70" r="6" fill="#FFD54F"/><circle cx="72" cy="66" r="7" fill="#EF5350"/>
+          <circle cx="84" cy="72" r="6" fill="#66BB6A"/><circle cx="66" cy="80" r="6" fill="#FFA726"/>
+        </svg>
+      </div>
+    </section>
+
+    <section class="stats-row">
+      <div class="stat-card"><div class="stat-icon"><i data-lucide="shopping-cart"></i></div><div class="stat-value">4</div><div class="stat-label">Active Orders</div></div>
+      <div class="stat-card"><div class="stat-icon"><i data-lucide="check-circle-2"></i></div><div class="stat-value">27</div><div class="stat-label">Completed Orders</div></div>
+      <div class="stat-card"><div class="stat-icon"><i data-lucide="indian-rupee"></i></div><div class="stat-value">₹68,400</div><div class="stat-label">Total Spent</div></div>
+      <div class="stat-card"><div class="stat-icon"><i data-lucide="heart"></i></div><div class="stat-value">9</div><div class="stat-label">Saved Sellers</div></div>
+    </section>
+
+    <section class="grid-2col">
+      <div class="card" style="padding:20px;">
+        <div class="section-head"><h2>Browse Fresh Listings</h2><a class="link" href="#">View all</a></div>
+        <div class="crop-market-grid" style="padding:0;">
+          <div class="listing-card">
+            <div class="listing-top"><div class="listing-emoji">🍅</div><div><div class="listing-name">Tomato</div><div class="listing-seller"><i data-lucide="map-pin"></i>Ramesh Farms, Nalanda</div></div></div>
+            <div class="listing-meta"><div class="listing-price">₹1,850/qtl</div><div class="listing-qty">12 qtl avail.</div></div>
+            <div class="listing-btn">View &amp; Order</div>
+          </div>
+          <div class="listing-card">
+            <div class="listing-top"><div class="listing-emoji">🌾</div><div><div class="listing-name">Rice</div><div class="listing-seller"><i data-lucide="map-pin"></i>Ganga Mandi, Patna</div></div></div>
+            <div class="listing-meta"><div class="listing-price">₹2,340/qtl</div><div class="listing-qty">30 qtl avail.</div></div>
+            <div class="listing-btn">View &amp; Order</div>
+          </div>
+          <div class="listing-card">
+            <div class="listing-top"><div class="listing-emoji">🧅</div><div><div class="listing-name">Onion</div><div class="listing-seller"><i data-lucide="map-pin"></i>Sunita Kirana, Gaya</div></div></div>
+            <div class="listing-meta"><div class="listing-price">₹980/qtl</div><div class="listing-qty">8 qtl avail.</div></div>
+            <div class="listing-btn">View &amp; Order</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="right-col">
+        <div class="card panel-card">
+          <div class="section-head"><h2 style="font-size:15px;">Track Delivery</h2></div>
+          <div class="track-steps">
+            <div class="track-step"><div class="track-dot done"><i data-lucide="check"></i></div><div><div class="track-title">Order confirmed</div><div class="track-sub">Rice · 5 qtl · Ganga Mandi</div></div></div>
+            <div class="track-step"><div class="track-dot done"><i data-lucide="check"></i></div><div><div class="track-title">Picked up</div><div class="track-sub">Today, 9:40 AM</div></div></div>
+            <div class="track-step"><div class="track-dot"><i data-lucide="truck"></i></div><div><div class="track-title">In transit</div><div class="track-sub">Arriving by 5:00 PM</div></div></div>
+            <div class="track-step"><div class="track-dot"><i data-lucide="home"></i></div><div><div class="track-title">Delivered</div><div class="track-sub">Pending</div></div></div>
+          </div>
+        </div>
+        <div class="card panel-card">
+          <div class="section-head"><h2 style="font-size:15px;">Recommended Sellers</h2></div>
+          <div class="seller-reco"><div class="seller-avatar" style="width:30px;height:30px;font-size:11px;">RF</div><div><div class="reco-name">Ramesh Farms</div><div class="reco-sub">Nalanda · Tomato, Wheat</div></div><div class="reco-badge">4.8★</div></div>
+          <div class="seller-reco"><div class="seller-avatar" style="width:30px;height:30px;font-size:11px;">GM</div><div><div class="reco-name">Ganga Mandi</div><div class="reco-sub">Patna · Rice, Pulses</div></div><div class="reco-badge">4.6★</div></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="card" style="padding:20px;">
+      <div class="section-head"><h2>My Recent Orders</h2><a class="link" href="#">View all</a></div>
+      <table class="orders-table">
+        <thead><tr><th>Seller</th><th>Crop</th><th>Amount</th><th>Payment</th><th>Delivery</th></tr></thead>
+        <tbody>
+          <tr><td><div class="seller-cell"><div class="seller-avatar">RF</div>Ramesh Farms</div></td><td>Tomato · 6 qtl</td><td>₹11,100</td><td><span class="pill success">Paid</span></td><td><span class="pill info">In Transit</span></td></tr>
+          <tr><td><div class="seller-cell"><div class="seller-avatar">GM</div>Ganga Mandi</td><td>Rice · 5 qtl</td><td>₹11,700</td><td><span class="pill success">Paid</span></td><td><span class="pill warning">Picked Up</span></td></tr>
+          <tr><td><div class="seller-cell"><div class="seller-avatar">SK</div>Sunita Kirana</td><td>Onion · 3 qtl</td><td>₹2,940</td><td><span class="pill success">Paid</span></td><td><span class="pill success">Delivered</span></td></tr>
+        </tbody>
+      </table>
+    </section>
+  </main>
+</div>
+<script src="/js/buyerJs/buyerDash.js"></script>
+
+</body>
+</html>

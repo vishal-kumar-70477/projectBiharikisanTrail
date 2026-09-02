@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BIHARI KISAN — Driver Dashboard</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700;800&family=Inter:wght@400;500;600;700&family=Noto+Sans+Devanagari:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/css/driverCss/driverDash.css">
+<script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+</head>
+<body>
+<div class="shell">
+  <aside class="sidebar" id="sidebar">
+    <div class="brand-block">
+      <div class="brand"><span class="leaf">🌾</span> BIHARI KISAN</div>
+      <div class="tagline">Driver Dashboard</div>
+    </div>
+    <nav class="nav-scroll">
+      <a class="nav-item active" href="#"><i data-lucide="layout-grid"></i><span class="label">Dashboard</span></a>
+      <a class="nav-item" href="#"><i data-lucide="package-search"></i><span class="label">Available Deliveries</span></a>
+      <a class="nav-item" href="#"><i data-lucide="truck"></i><span class="label">My Deliveries</span></a>
+      <a class="nav-item" href="#"><i data-lucide="indian-rupee"></i><span class="label">Earnings</span></a>
+      <a class="nav-item" href="#"><i data-lucide="history"></i><span class="label">Delivery History</span></a>
+      <a class="nav-item" href="#"><i data-lucide="car"></i><span class="label">Vehicle Details</span></a>
+      <a class="nav-item" href="#"><i data-lucide="life-buoy"></i><span class="label">Help &amp; Support</span></a>
+      <a class="nav-item" href="#"><i data-lucide="settings"></i><span class="label">Settings</span></a>
+    </nav>
+    <div class="sidebar-foot">
+      <a class="nav-item logout-item" id="logoutBtn" href="#" ><i data-lucide="log-out" ></i><span class="label">Logout</span></a>
+    </div>
+  </aside>
+
+  <header class="topbar">
+    <button class="hamburger" id="hamburgerBtn"><i data-lucide="menu"></i></button>
+    <div class="search-wrap"><i data-lucide="search"></i><input type="text" placeholder="Search deliveries, routes..."></div>
+    <div class="top-actions">
+      <div class="status-toggle"><span class="status-dot"></span><span>Online</span></div>
+      <button class="icon-btn"><i data-lucide="bell"></i><span class="dot"></span></button>
+      <div class="profile-btn">
+    <div class="avatar">
+        <%= data.userName
+            .split(" ")
+            .map(name => name[0])
+            .join("")
+            .substring(0, 2)
+            .toUpperCase() %>
+    </div>
+</div>
+  </header>
+
+  <main class="main">
+    <section class="hero">
+      <div class="hero-left">
+       <div class="hero-greet">Welcome back, <span id="userName"> <%= data.userName %> </span> 👋</div>
+       <div class="hero-sub">Good Morning · <%= data.address %> · 3.2 acres registered</div>
+        <div class="hero-tags">
+          <div class="hero-tag"><i data-lucide="zap"></i> You're online — new jobs will show up here</div>
+          <div class="hero-tag"><i data-lucide="star"></i> 4.9 driver rating</div>
+        </div>
+      </div>
+      <div class="hero-right">
+        <svg class="hero-illustration" viewBox="0 0 140 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <ellipse cx="70" cy="108" rx="52" ry="8" fill="rgba(255,255,255,0.15)"/>
+          <rect x="18" y="56" width="62" height="34" rx="6" fill="#fff" opacity="0.92"/>
+          <path d="M80 66h20l14 14v10H80z" fill="#fff" opacity="0.75"/>
+          <rect x="86" y="70" width="14" height="10" rx="2" fill="#E65100"/>
+          <circle cx="40" cy="92" r="10" fill="#263238"/><circle cx="40" cy="92" r="4" fill="#B0BEC5"/>
+          <circle cx="92" cy="92" r="10" fill="#263238"/><circle cx="92" cy="92" r="4" fill="#B0BEC5"/>
+        </svg>
+      </div>
+    </section>
+
+    <section class="stats-row">
+      <div class="stat-card"><div class="stat-icon"><i data-lucide="indian-rupee"></i></div><div class="stat-value">₹1,240</div><div class="stat-label">Today's Earnings</div></div>
+      <div class="stat-card"><div class="stat-icon"><i data-lucide="check-circle-2"></i></div><div class="stat-value">6</div><div class="stat-label">Deliveries Completed</div></div>
+      <div class="stat-card"><div class="stat-icon"><i data-lucide="route"></i></div><div class="stat-value">84 km</div><div class="stat-label">Distance Covered</div></div>
+      <div class="stat-card"><div class="stat-icon"><i data-lucide="star"></i></div><div class="stat-value">4.9</div><div class="stat-label">Driver Rating</div></div>
+    </section>
+
+    <section class="grid-2col">
+      <div class="card active-delivery">
+        <div class="section-head"><h2>Active Delivery</h2><span class="pill" style="background:#FFF3E0;color:var(--orange);padding:5px 11px;border-radius:999px;font-size:11.5px;font-weight:700;">In Progress</span></div>
+        <div class="delivery-route">
+          <div class="route-point"><span class="label">Pickup</span><span class="place">Ramesh Farms, Nalanda</span></div>
+          <div class="route-line"><i data-lucide="arrow-right"></i></div>
+          <div class="route-point"><span class="label">Drop</span><span class="place">Ganga Mandi, Patna</span></div>
+        </div>
+        <div class="delivery-badges">
+          <div class="d-badge"><i data-lucide="package"></i> Rice · 5 quintal</div>
+          <div class="d-badge"><i data-lucide="route"></i> 42 km</div>
+          <div class="d-badge"><i data-lucide="indian-rupee"></i> ₹450 payout</div>
+        </div>
+        <div class="status-stepper">
+          <div class="status-step done"><div class="status-line"></div><div class="dot"><i data-lucide="check"></i></div><span>Assigned</span></div>
+          <div class="status-step done"><div class="status-line"></div><div class="dot"><i data-lucide="check"></i></div><span>Picked Up</span></div>
+          <div class="status-step"><div class="status-line"></div><div class="dot">3</div><span>In Transit</span></div>
+          <div class="status-step"><div class="dot">4</div><span>Delivered</span></div>
+        </div>
+        <button class="btn-orange"><i data-lucide="check-circle"></i> Mark as Delivered</button>
+      </div>
+
+      <div class="right-col">
+        <div class="card panel-card">
+          <div class="section-head"><h2 style="font-size:15px;">Today's Earnings</h2></div>
+          <div class="earn-row"><span>Base fare</span><b>₹820</b></div>
+          <div class="earn-row"><span>Distance bonus</span><b>₹280</b></div>
+          <div class="earn-row"><span>Tips</span><b>₹140</b></div>
+          <div class="earn-row"><span>Total</span><b style="color:var(--orange);">₹1,240</b></div>
+        </div>
+        <div class="card panel-card">
+          <div class="section-head"><h2 style="font-size:15px;">Recent Deliveries</h2></div>
+          <div class="history-item"><div class="history-icon"><i data-lucide="truck"></i></div><div><div class="history-title">Wheat · Muzaffarpur</div><div class="history-sub">Yesterday, 4:20 PM</div></div><div class="history-amt">₹380</div></div>
+          <div class="history-item"><div class="history-icon"><i data-lucide="truck"></i></div><div><div class="history-title">Onion · Gaya</div><div class="history-sub">Yesterday, 11:10 AM</div></div><div class="history-amt">₹290</div></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="card">
+      <div class="section-head" style="padding:20px 20px 0;"><h2>Available Delivery Requests</h2><a class="link" href="#">Refresh</a></div>
+      <div class="job-list">
+        <div class="job-card">
+          <div style="flex:1;">
+            <div class="job-route"><i data-lucide="map-pin"></i>Sunita Kirana, Gaya → Patna City Market</div>
+            <div class="job-meta">Onion · 3 quintal · 58 km · Pickup in 20 min</div>
+          </div>
+          <div class="job-payout">₹520</div>
+          <button class="btn-accept">Accept</button>
+        </div>
+        <div class="job-card">
+          <div style="flex:1;">
+            <div class="job-route"><i data-lucide="map-pin"></i>Vishal Kumar, Nalanda → Rajgir Wholesale Hub</div>
+            <div class="job-meta">Tomato · 6 quintal · 24 km · Pickup in 40 min</div>
+          </div>
+          <div class="job-payout">₹310</div>
+          <button class="btn-accept">Accept</button>
+        </div>
+        <div class="job-card">
+          <div style="flex:1;">
+            <div class="job-route"><i data-lucide="map-pin"></i>Ganga Mandi, Patna → Danapur Depot</div>
+            <div class="job-meta">Rice · 10 quintal · 16 km · Pickup in 1 hr</div>
+          </div>
+          <div class="job-payout">₹260</div>
+          <button class="btn-accept">Accept</button>
+        </div>
+      </div>
+    </section>
+  </main>
+</div>
+<script src="/js/driverJs/driverDash.js"></script>
+</body>
+</html>

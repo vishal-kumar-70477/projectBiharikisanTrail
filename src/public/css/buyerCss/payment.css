@@ -1,0 +1,161 @@
+/* ==========================================================================
+   BIHARI KISAN — Design Tokens
+   ========================================================================== */
+:root{
+  --forest:#43A047;
+  --forest-dark:#0F2A20;
+  --leaf:#2E7D32;
+  --leaf-dark:#2D6A4F;
+  --leaf-light:#D8F3DC;
+  --cream:#FAF6EC;
+  --cream-dark:#F1EAD5;
+  --brown:#8B5E34;
+  --brown-light:#EFDFC6;
+  --gold:#E3A857;
+  --charcoal:#24261F;
+  --charcoal-soft:#5B5D50;
+  --white:#FFFFFF;
+  --border:#E4DFCB;
+  --shadow-sm: 0 2px 10px rgba(27,67,50,0.06);
+  --shadow-md: 0 8px 24px rgba(27,67,50,0.10);
+  --radius-sm:10px;
+  --radius-md:16px;
+  --radius-lg:26px;
+  --font-display:'Fraunces', Georgia, serif;
+  --font-body:'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  --max-w:1160px;
+}
+*{ box-sizing:border-box; }
+body{
+  margin:0; font-family:var(--font-body); background:var(--cream); color:var(--charcoal); line-height:1.5;
+  -webkit-font-smoothing:antialiased;
+}
+img{ max-width:100%; display:block; }
+button{ font-family:inherit; cursor:pointer; }
+input, select{ font-family:inherit; }
+:focus-visible{ outline:3px solid var(--gold); outline-offset:2px; }
+
+.bk-header{ background:var(--forest); position:sticky; top:0; z-index:50; }
+.bk-header__inner{ max-width:var(--max-w); margin:0 auto; padding:14px 28px; display:flex; align-items:center; justify-content:space-between; }
+.bk-logo{ display:flex; align-items:center; gap:10px; text-decoration:none; }
+.bk-logo__icon{ width:38px; height:38px; border-radius:50%; background:var(--leaf); display:flex; align-items:center; justify-content:center; color:var(--forest-dark); font-size:18px; }
+.bk-logo__text{ font-family:var(--font-display); font-weight:700; font-size:20px; color:var(--white); }
+.bk-logo__text em{ font-style:normal; color:var(--gold); margin-left:4px; }
+.bk-header__lock{ color:var(--leaf-light); font-size:13px; font-weight:700; display:flex; align-items:center; gap:7px; }
+
+.bk-page{ max-width:var(--max-w); margin:0 auto; padding:28px 28px 60px; }
+
+.bk-steps{ list-style:none; display:flex; align-items:center; gap:0; margin:0 0 22px; padding:0; }
+.bk-step{ display:flex; align-items:center; gap:10px; font-size:13.5px; font-weight:600; color:var(--charcoal-soft); }
+.bk-step:not(:last-child)::after{ content:""; width:64px; height:2px; background:var(--border); margin:0 14px; }
+.bk-step.is-done:not(:last-child)::after{ background:var(--leaf); }
+.bk-step__dot{ width:28px; height:28px; border-radius:50%; background:var(--white); border:2px solid var(--border); display:flex; align-items:center; justify-content:center; font-size:12px; color:var(--charcoal-soft); }
+.bk-step.is-done .bk-step__dot{ background:var(--leaf); border-color:var(--leaf); color:var(--white); }
+.bk-step.is-active .bk-step__dot{ background:var(--forest); border-color:var(--forest); color:var(--white); }
+.bk-step.is-active{ color:var(--forest-dark); }
+
+.bk-title-block{ margin-bottom:24px; }
+.bk-title-block h1{ font-family:var(--font-display); font-size:26px; color:var(--forest-dark); margin:0 0 6px; }
+.bk-title-block p{ margin:0; color:var(--charcoal-soft); font-size:14.5px; }
+
+.bk-layout{ display:grid; grid-template-columns:1fr 340px; gap:26px; align-items:start; }
+
+/* Payment methods */
+.bk-methods{
+  background:var(--white); border:1px solid var(--border); border-radius:var(--radius-md);
+  overflow:hidden; box-shadow:var(--shadow-sm);
+}
+.bk-method{
+  display:flex; align-items:center; gap:14px; padding:18px 20px;
+  border-bottom:1px solid var(--border); cursor:pointer; transition:background .15s ease;
+}
+.bk-method:hover{ background:var(--cream-dark); }
+.bk-method.is-active{ background:var(--leaf-light); }
+.bk-method__icon{
+  width:42px; height:42px; border-radius:50%; flex-shrink:0;
+  background:var(--cream-dark); color:var(--forest-dark);
+  display:flex; align-items:center; justify-content:center; font-size:17px;
+}
+.bk-method.is-active .bk-method__icon{ background:var(--forest); color:var(--white); }
+.bk-method__text{ display:flex; flex-direction:column; gap:2px; flex:1; }
+.bk-method__text strong{ font-size:14.5px; color:var(--charcoal); }
+.bk-method__text span{ font-size:12.5px; color:var(--charcoal-soft); }
+.bk-method__radio{
+  width:20px; height:20px; border-radius:50%; border:2px solid var(--border); flex-shrink:0; position:relative;
+}
+.bk-method.is-active .bk-method__radio{ border-color:var(--leaf-dark); }
+.bk-method.is-active .bk-method__radio::after{
+  content:""; position:absolute; inset:3px; border-radius:50%; background:var(--leaf-dark);
+}
+
+.bk-method__panel{
+  padding:20px 24px 24px; border-bottom:1px solid var(--border); background:var(--cream);
+}
+.bk-method__panel label{ display:block; font-size:13px; font-weight:700; color:var(--forest-dark); margin-bottom:8px; }
+.bk-method__panel select,
+.bk-method__panel input{
+  width:100%; padding:12px 14px; border:1.5px solid var(--border); border-radius:var(--radius-sm);
+  font-size:14px; background:var(--white); color:var(--charcoal);
+}
+.bk-input-row{ display:flex; gap:10px; }
+.bk-input-row input{ flex:1; }
+.bk-hint{ font-size:13px; color:var(--charcoal-soft); margin:10px 0 0; display:flex; align-items:center; gap:8px; }
+.bk-hint i{ color:var(--brown); }
+
+.bk-form-grid{ display:grid; grid-template-columns:1fr 1fr; gap:14px; margin-bottom:16px; }
+.bk-field--full{ grid-column:1 / -1; }
+.bk-field label{ display:block; font-size:12.5px; font-weight:700; color:var(--forest-dark); margin-bottom:6px; }
+
+/* Buttons */
+.bk-btn{
+  display:flex; align-items:center; justify-content:center; gap:9px;
+  padding:14px 20px; border-radius:999px; border:none;
+  font-size:14.5px; font-weight:700; font-family:inherit;
+  transition:transform .12s ease, box-shadow .12s ease, background .15s ease;
+}
+.bk-btn:active{ transform:scale(0.98); }
+.bk-btn--primary{ background:var(--leaf); color:var(--forest-dark); box-shadow:var(--shadow-sm); }
+.bk-btn--primary:hover{ background:var(--leaf-dark); color:var(--white); box-shadow:var(--shadow-md); }
+.bk-btn--primary:disabled{ opacity:.75; cursor:progress; }
+.bk-btn--outline{ background:var(--white); color:var(--forest-dark); border:1.5px solid var(--forest); }
+.bk-btn--outline:hover{ background:var(--cream-dark); }
+.bk-btn--block{ width:100%; padding:16px; font-size:15.5px; }
+
+/* Summary */
+.bk-summary{
+  position:sticky; top:96px;
+  background:var(--white); border:1px solid var(--border); border-radius:var(--radius-md);
+  padding:22px; box-shadow:var(--shadow-sm);
+}
+.bk-summary h2{ font-size:16px; margin:0 0 16px; color:var(--forest-dark); }
+.bk-summary__item{ display:flex; align-items:center; gap:12px; margin-bottom:14px; }
+.bk-summary__item img{ width:52px; height:52px; border-radius:var(--radius-sm); object-fit:cover; }
+.bk-summary__item div{ display:flex; flex-direction:column; }
+.bk-summary__item strong{ font-size:14px; }
+.bk-summary__item span{ font-size:12.5px; color:var(--charcoal-soft); }
+.bk-summary__divider{ height:1px; background:var(--border); margin:12px 0; }
+.bk-summary__row{ display:flex; justify-content:space-between; font-size:14px; color:var(--charcoal-soft); padding:5px 0; }
+.bk-summary__row--total{ font-weight:800; font-size:17px; color:var(--forest-dark); }
+
+.bk-security{
+  display:flex; align-items:flex-start; gap:9px; background:var(--cream-dark);
+  border-radius:var(--radius-sm); padding:12px 14px; margin:16px 0; font-size:12px; color:var(--charcoal-soft); line-height:1.5;
+}
+.bk-security i{ color:var(--leaf-dark); margin-top:1px; }
+
+.bk-footer{ background:var(--forest-dark); color:var(--leaf-light); text-align:center; padding:20px; font-size:13.5px; }
+
+/* Responsive */
+@media (max-width:960px){
+  .bk-layout{ grid-template-columns:1fr; }
+  .bk-summary{ position:static; }
+}
+@media (max-width:640px){
+  .bk-header__inner{ padding:12px 16px; }
+  .bk-header__lock span{ display:none; }
+  .bk-page{ padding:18px 16px 40px; }
+  .bk-form-grid{ grid-template-columns:1fr; }
+  .bk-input-row{ flex-direction:column; }
+  .bk-steps{ overflow-x:auto; }
+  .bk-step:not(:last-child)::after{ width:28px; margin:0 8px; }
+}

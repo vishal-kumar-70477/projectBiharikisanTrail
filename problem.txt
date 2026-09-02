@@ -1,0 +1,6 @@
+password hashing
+create password hashing
+email verfication not true in db
+
+frontend :-
+farmer dash- active crops

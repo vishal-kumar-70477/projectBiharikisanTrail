@@ -1,0 +1,186 @@
+/* ==========================================================================
+   BIHARI KISAN — Design Tokens
+   ========================================================================== */
+:root{
+  --forest:#43A047;
+  --forest-dark:#0F2A20;
+  --leaf:#2E7D32;
+  --leaf-dark:#2D6A4F;
+  --leaf-light:#D8F3DC;
+  --cream:#FAF6EC;
+  --cream-dark:#F1EAD5;
+  --brown:#8B5E34;
+  --brown-light:#EFDFC6;
+  --gold:#E3A857;
+  --charcoal:#24261F;
+  --charcoal-soft:#5B5D50;
+  --white:#FFFFFF;
+  --border:#E4DFCB;
+  --shadow-sm: 0 2px 10px rgba(27,67,50,0.06);
+  --shadow-md: 0 8px 24px rgba(27,67,50,0.10);
+  --radius-sm:10px;
+  --radius-md:16px;
+  --radius-lg:26px;
+  --font-display:'Fraunces', Georgia, serif;
+  --font-body:'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  --max-w:880px;
+}
+*{ box-sizing:border-box; }
+body{
+  margin:0; font-family:var(--font-body); background:var(--cream); color:var(--charcoal); line-height:1.5;
+  -webkit-font-smoothing:antialiased;
+}
+img{ max-width:100%; display:block; }
+a{ text-decoration:none; }
+:focus-visible{ outline:3px solid var(--gold); outline-offset:2px; }
+
+.bk-header{ background:var(--forest);  }
+.bk-header__inner{ max-width:var(--max-w); margin:0 auto; padding:14px 28px; display:flex; align-items:center; justify-content:space-between; }
+.bk-logo{ display:flex; align-items:center; gap:10px; text-decoration:none; }
+.bk-logo__icon{ width:38px; height:38px; border-radius:50%; background:var(--leaf); display:flex; align-items:center; justify-content:center; color:var(--forest-dark); font-size:18px; }
+.bk-logo__text{ font-family:var(--font-display); font-weight:700; font-size:20px; color:var(--white); }
+.bk-logo__text em{ font-style:normal; color:var(--gold); margin-left:4px; }
+.bk-avatar{ width:38px; height:38px; border-radius:50%; background:var(--gold); color:var(--forest-dark); display:flex; align-items:center; justify-content:center; font-weight:700; font-size:14px; }
+
+.bk-page{ max-width:var(--max-w); margin:0 auto; padding:0 28px 60px; }
+
+/* ---------- Hero ---------- */
+.bk-hero{
+  text-align:center; padding:56px 20px 40px;
+  background-image:
+    repeating-linear-gradient(115deg, rgba(27,67,50,0.05) 0px, rgba(27,67,50,0.05) 2px, transparent 2px, transparent 34px);
+  border-radius:0 0 var(--radius-lg) var(--radius-lg);
+}
+.bk-check{ width:104px; height:104px; margin:0 auto 22px; }
+.bk-check svg{ width:100%; height:100%; }
+.bk-check__ring{
+  fill:none; stroke:var(--leaf); stroke-width:6;
+  stroke-dasharray:283; stroke-dashoffset:283;
+  animation:bk-draw-ring .7s ease-out forwards;
+}
+.bk-check__mark{
+  fill:none; stroke:var(--forest-dark); stroke-width:7; stroke-linecap:round; stroke-linejoin:round;
+  stroke-dasharray:70; stroke-dashoffset:70;
+  animation:bk-draw-mark .5s ease-out .55s forwards;
+}
+@keyframes bk-draw-ring{ to{ stroke-dashoffset:0; } }
+@keyframes bk-draw-mark{ to{ stroke-dashoffset:0; } }
+@media (prefers-reduced-motion:reduce){
+  .bk-check__ring, .bk-check__mark{ animation:none; stroke-dashoffset:0; }
+}
+
+.bk-hero h1{
+  font-family:var(--font-display); font-size:30px; color:var(--forest-dark); margin:0 0 10px;
+}
+.bk-hero__hindi{ font-size:16px; color:var(--leaf-dark); font-weight:600; margin:0 0 18px; }
+.bk-hero__meta{
+  display:inline-flex; align-items:center; gap:10px; flex-wrap:wrap; justify-content:center;
+  background:var(--white); border:1px solid var(--border); border-radius:999px;
+  padding:10px 20px; font-size:13.5px; color:var(--charcoal-soft); box-shadow:var(--shadow-sm);
+}
+.bk-hero__meta strong{ color:var(--forest-dark); }
+.bk-dot-sep{ color:var(--brown); }
+
+/* ---------- Layout ---------- */
+.bk-layout{ margin-top:28px; }
+.bk-main-col{ display:flex; flex-direction:column; gap:18px; }
+
+.bk-card{
+  background:var(--white); border:1px solid var(--border); border-radius:var(--radius-md);
+  padding:22px; box-shadow:var(--shadow-sm);
+}
+.bk-card h2{ font-size:15.5px; margin:0 0 16px; color:var(--forest-dark); display:flex; align-items:center; gap:9px; }
+.bk-card h2 i{ color:var(--leaf-dark); }
+
+/* Farmer card */
+.bk-farmer-card{ padding:0; overflow:hidden; }
+.bk-farmer-card__badge{
+  background:var(--leaf-light); color:var(--leaf-dark); font-weight:700; font-size:13px;
+  padding:12px 22px; display:flex; align-items:center; gap:8px;
+}
+.bk-farmer-card__body{
+  display:flex; align-items:center; gap:16px; padding:20px 22px; flex-wrap:wrap;
+}
+.bk-farmer-card__avatar{
+  width:50px; height:50px; border-radius:50%; flex-shrink:0;
+  background:var(--gold); color:var(--);
+  display:flex; align-items:center; justify-content:center; font-weight:700; font-size:18px;
+}
+.bk-farmer-card__body strong{ display:block; font-size:15.5px; margin-bottom:3px; }
+.bk-farmer-card__body span{ font-size:13px; color:var(--charcoal-soft); display:flex; align-items:center; gap:6px; }
+.bk-farmer-card__product{
+  margin-left:auto; text-align:right; display:flex; flex-direction:column; gap:2px;
+}
+.bk-farmer-card__product span:first-child{ font-weight:700; color:var(--forest-dark); font-size:14.5px; }
+.bk-farmer-card__product span:last-child{ font-size:12.5px; color:var(--charcoal-soft); }
+
+/* Timeline */
+.bk-timeline{
+  list-style:none; margin:0 0 16px; padding:0; display:flex; flex-direction:column;
+}
+.bk-timeline li{
+  position:relative; display:flex; align-items:center; gap:14px; padding:9px 0 9px 0;
+}
+.bk-timeline li:not(:last-child)::before{
+  content:""; position:absolute; left:13px; top:34px; bottom:-9px; width:2px; background:var(--border);
+}
+.bk-timeline li.is-done:not(:last-child)::before{ background:var(--leaf); }
+.bk-timeline__dot{
+  width:28px; height:28px; border-radius:50%; flex-shrink:0;
+  background:var(--white); border:2px solid var(--border);
+  display:flex; align-items:center; justify-content:center; font-size:12px; color:var(--charcoal-soft);
+  z-index:1;
+}
+.bk-timeline li.is-done .bk-timeline__dot{ background:var(--leaf); border-color:var(--leaf); color:var(--white); }
+.bk-timeline__label{ font-size:14px; font-weight:600; color:var(--charcoal); }
+.bk-timeline li.is-done .bk-timeline__label{ color:var(--forest-dark); }
+.bk-eta{
+  margin:0; font-size:13.5px; color:var(--brown); background:var(--cream-dark);
+  border-radius:var(--radius-sm); padding:12px 14px; display:flex; align-items:center; gap:9px;
+}
+
+/* Payment info */
+.bk-payment-info{ display:grid; grid-template-columns:repeat(3,1fr); gap:16px; }
+.bk-payment-info div{ display:flex; flex-direction:column; gap:5px; }
+.bk-payment-info span{ font-size:12px; color:var(--charcoal-soft); }
+.bk-payment-info strong{ font-size:15px; color:var(--charcoal); }
+.bk-status-success{ color:var(--leaf-dark) !important; display:flex; align-items:center; gap:6px; }
+
+/* ---------- Actions ---------- */
+.bk-actions{
+  display:flex; gap:14px; margin-top:28px; flex-wrap:wrap;
+}
+.bk-btn{
+  flex:1; min-width:180px;
+  display:flex; align-items:center; justify-content:center; gap:9px;
+  padding:14px 20px; border-radius:999px; border:none;
+  font-size:14.5px; font-weight:700; font-family:inherit;
+  transition:transform .12s ease, box-shadow .12s ease, background .15s ease;
+}
+.bk-btn:active{ transform:scale(0.98); }
+.bk-btn--primary{ background:var(--leaf); color:var(--forest-dark); box-shadow:var(--shadow-sm); }
+.bk-btn--primary:hover{ background:var(--leaf-dark); color:var(--white); box-shadow:var(--shadow-md); }
+.bk-btn--outline{ background:var(--white); color:var(--forest-dark); border:1.5px solid var(--forest); }
+.bk-btn--outline:hover{ background:var(--cream-dark); }
+
+/* ---------- Message ---------- */
+.bk-message{
+  text-align:center; margin-top:40px; padding:26px 20px;
+  border-top:1px dashed var(--border);
+}
+.bk-message p{ margin:0 0 6px; font-size:15px; color:var(--charcoal-soft); }
+.bk-message__tagline{ font-weight:800; color:var(--forest-dark); font-size:16px !important; }
+
+.bk-footer{ background:var(--forest-dark); color:var(--leaf-light); text-align:center; padding:20px; font-size:13.5px; }
+
+/* ---------- Responsive ---------- */
+@media (max-width:640px){
+  .bk-header__inner{ padding:12px 16px; }
+  .bk-page{ padding:0 16px 60px; }
+  .bk-hero{ padding:40px 12px 30px; }
+  .bk-hero h1{ font-size:24px; }
+  .bk-payment-info{ grid-template-columns:1fr; }
+  .bk-farmer-card__product{ margin-left:0; text-align:left; width:100%; border-top:1px dashed var(--border); padding-top:10px; }
+  .bk-actions{ flex-direction:column; }
+  .bk-btn{ width:100%; }
+}

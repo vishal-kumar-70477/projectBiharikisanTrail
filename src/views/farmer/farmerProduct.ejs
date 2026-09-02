@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BIHARI KISAN — Sell My Crop</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700;800&family=Inter:wght@400;500;600;700&family=Noto+Sans+Devanagari:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/css/farmerCss/farmerDash.css">
+<link rel="stylesheet" href="/css/farmerCss/farmerProduct.css">
+<script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+</head>
+<body>
+<div class="shell">
+  <aside class="sidebar" id="sidebar">
+    <div class="brand-block">
+      <div class="brand"><span class="leaf">🌾</span> BIHARI KISAN</div>
+      <div class="tagline">Farmer Dashboard</div>
+    </div>
+    <nav class="nav-scroll">
+
+  <a class="nav-item" href="/farmerDash">
+    <i data-lucide="layout-grid"></i>
+    <span class="label">Dashboard</span>
+  </a>
+
+  <a class="nav-item" href="#">
+    <i data-lucide="sprout"></i>
+    <span class="label">My Farm</span>
+  </a>
+
+  <a class="nav-item active" href="/farmerProduct">
+    <i data-lucide="shopping-basket"></i>
+    <span class="label">Sell My Crop</span>
+  </a>
+
+  <a class="nav-item" href="#">
+    <i data-lucide="cloud-sun"></i>
+    <span class="label">Weather &amp; Advisory</span>
+  </a>
+
+  <a class="nav-item" href="#">
+    <i data-lucide="droplets"></i>
+    <span class="label">Soil &amp; Irrigation</span>
+  </a>
+
+  <a class="nav-item" href="#">
+    <i data-lucide="line-chart"></i>
+    <span class="label">Market Prices</span>
+  </a>
+
+  <a class="nav-item" href="#">
+    <i data-lucide="landmark"></i>
+    <span class="label">Government Schemes</span>
+  </a>
+
+  <a class="nav-item" href="#">
+    <i data-lucide="life-buoy"></i>
+    <span class="label">Help &amp; Support</span>
+  </a>
+
+  <a class="nav-item" href="#">
+    <i data-lucide="settings"></i>
+    <span class="label">Settings</span>
+  </a>
+
+</nav>
+    <div class="sidebar-foot">
+      <a class="nav-item logout-item" id="logoutBtn" href="#"><i data-lucide="log-out"></i><span class="label">Logout</span></a>
+    </div>
+  </aside>
+
+  <header class="topbar">
+    <button class="hamburger" id="hamburgerBtn"><i data-lucide="menu"></i></button>
+    <div class="search-wrap"><i data-lucide="search"></i><input type="text" placeholder="Search your listings..."></div>
+    <div class="top-actions">
+      <div class="weather-chip"><span>☀️</span><span>32°C <%= data.address %></span></div>
+      <button class="icon-btn"><i data-lucide="bell"></i><span class="dot"></span></button>
+      <div class="profile-btn">
+        <div class="avatar">
+          <%= data.userName
+              .split(" ")
+              .map(name => name[0])
+              .join("")
+              .substring(0, 2)
+              .toUpperCase() %>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main class="main pu-wrap">
+    <div class="pu-page-head">
+      <div>
+        <h1>Sell My Crop</h1>
+        <p>List a new crop for buyers and track everything you've already put up for sale.</p>
+      </div>
+      <div class="pu-header-stat"><i data-lucide="shopping-basket"></i><span id="puCount">Loading...</span></div>
+    </div>
+
+    <div class="pu-layout">
+      <!-- Upload form -->
+      <form class="pu-upload-card" id="puForm" novalidate>
+        <h2><i data-lucide="upload-cloud"></i> List a new product</h2>
+        <p class="pu-upload-sub">Add a clear photo and a few details — buyers see this exactly as filled in.</p>
+
+        <div class="pu-dropzone" id="puDropzone">
+          <input type="file" id="puFileInput" accept="image/*">
+          <div class="pu-dropzone-empty" id="puDropzoneEmpty">
+            <i data-lucide="image-plus"></i>
+            <div class="t">Add a product photo</div>
+            <div class="d">Click or drag an image here</div>
+          </div>
+          <img id="puPreviewImg" class="pu-preview-img" alt="Selected product photo" style="display:none;">
+          <button type="button" id="puRemoveImg" class="pu-remove-img" style="display:none;" aria-label="Remove photo">
+            <i data-lucide="x"></i>
+          </button>
+        </div>
+        <div class="pu-field-error" style="display:block;margin-top:6px;" id="puFileError"></div>
+
+        <div class="pu-field">
+          <label for="puDesc">Description</label>
+          <textarea id="puDesc" name="productDesc" placeholder="e.g. Fresh wheat, harvested this week, Grade A"></textarea>
+          <div class="pu-field-error">Add a short description.</div>
+        </div>
+
+        <div class="pu-field">
+          <label for="puQty">Quantity (kg)</label>
+          <input type="number" id="puQty" name="productQuantity" min="1" step="1" placeholder="e.g. 250">
+          <div class="pu-field-error">Enter a valid quantity.</div>
+        </div>
+
+        <div class="pu-field has-prefix">
+          <label for="puPrice">Price</label>
+          <div class="pu-input-row">
+            <span class="pu-prefix">₹</span>
+            <input type="number" id="puPrice" name="productPrice" min="1" step="1" placeholder="e.g. 2180">
+          </div>
+          <div class="pu-field-error">Enter a valid price.</div>
+        </div>
+
+        <button type="submit" class="pu-submit-btn" id="puSubmitBtn">
+          <i data-lucide="upload"></i> List Product
+        </button>
+
+        <div class="pu-form-msg" id="puFormMsg"></div>
+      </form>
+
+      <!-- Listing -->
+      <div>
+        <div class="pu-list-head">
+          <h2>My Listings</h2>
+          <button type="button" class="pu-refresh-btn" id="puRefreshBtn">
+            <i data-lucide="refresh-cw"></i> Refresh
+          </button>
+        </div>
+        <!-- Each card + its three-dot menu is rendered by farmerProduct.js -->
+        <div class="pu-grid" id="puGrid"></div>
+      </div>
+    </div>
+  </main>
+</div>
+
+<!-- ===================== EDIT PRODUCT MODAL ===================== -->
+<div class="pu-modal-overlay" id="puEditOverlay">
+  <div class="pu-modal">
+    <div class="pu-modal-head">
+      <h2>Edit product</h2>
+      <button type="button" class="pu-modal-close" id="puEditClose" aria-label="Close">
+        <i data-lucide="x"></i>
+      </button>
+    </div>
+    <p class="pu-modal-sub">Update the details below. Leave the photo as-is if you don't want to change it.</p>
+
+    <form id="puEditForm" novalidate>
+      <div class="pu-dropzone has-image" id="puEditDropzone">
+        <input type="file" id="puEditFileInput" accept="image/*">
+        <div class="pu-dropzone-empty" id="puEditDropzoneEmpty" style="display:none;">
+          <i data-lucide="image-plus"></i>
+          <div class="t">Add a product photo</div>
+          <div class="d">Click or drag an image here</div>
+        </div>
+        <img id="puEditPreviewImg" class="pu-preview-img" alt="Product photo" style="display:none;">
+      </div>
+
+      <div class="pu-field">
+        <label for="puEditDesc">Description</label>
+        <textarea id="puEditDesc" name="productDesc"></textarea>
+        <div class="pu-field-error">Add a short description.</div>
+      </div>
+
+      <div class="pu-field">
+        <label for="puEditQty">Quantity (kg)</label>
+        <input type="number" id="puEditQty" name="productQuantity" min="1" step="1">
+        <div class="pu-field-error">Enter a valid quantity.</div>
+      </div>
+
+      <div class="pu-field has-prefix">
+        <label for="puEditPrice">Price</label>
+        <div class="pu-input-row">
+          <span class="pu-prefix">₹</span>
+          <input type="number" id="puEditPrice" name="productPrice" min="1" step="1">
+        </div>
+        <div class="pu-field-error">Enter a valid price.</div>
+      </div>
+
+      <div style="display:flex; gap:10px; margin-top:18px;">
+        <button type="button" id="puEditCancel" class="pu-confirm-cancel" style="flex:1; border-radius:10px; padding:10px 14px; font-size:13.5px; font-weight:600; border:1px solid var(--pu-border); background:#fff; cursor:pointer;">Cancel</button>
+        <button type="submit" class="pu-submit-btn" id="puEditSubmitBtn" style="flex:1; margin-top:0;">
+          <i data-lucide="save"></i> Save Changes
+        </button>
+      </div>
+
+      <div class="pu-form-msg" id="puEditFormMsg"></div>
+    </form>
+  </div>
+</div>
+
+<!-- ===================== DELETE CONFIRM MODAL ===================== -->
+<div class="pu-modal-overlay" id="puDeleteOverlay">
+  <div class="pu-modal" style="max-width:360px;">
+    <div class="pu-modal-head">
+      <h2>Delete product</h2>
+      <button type="button" class="pu-modal-close" id="puDeleteClose" aria-label="Close">
+        <i data-lucide="x"></i>
+      </button>
+    </div>
+    <p class="pu-confirm-body">
+      Delete "<span id="puDeleteProductName">this product</span>"? This can't be undone.
+    </p>
+    <div class="pu-confirm-actions">
+      <button type="button" id="puDeleteCancel" class="pu-confirm-cancel">Cancel</button>
+      <button type="button" id="puDeleteConfirm" class="pu-confirm-delete">Delete</button>
+    </div>
+  </div>
+</div>
+
+<script src="/js/farmerJs/farmerDash.js"></script>
+<script src="/js/farmerJs/farmerProduct.js"></script>
+</body>
+</html>

@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>My Cart — Bihari Kisan</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=Inter:wght@400;500;600;700;800&family=Noto+Sans+Devanagari:wght@500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<link rel="stylesheet" href="/css/buyerCss/cart.css">
+</head>
+<body>
+
+<header class="bk-header">
+  <div class="bk-header__inner">
+    <a class="bk-logo" href="product-details.html" aria-label="Bihari Kisan home">
+      <span class="bk-logo__icon"><i class="fa-solid fa-seedling"></i></span>
+      <span class="bk-logo__text">BIHARI<em>KISAN</em></span>
+    </a>
+
+    <form class="bk-search" role="search" aria-label="Search crops">
+      <i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i>
+      <input type="search" placeholder="Search crops, farmers, villages..." aria-label="Search crops, farmers, villages">
+    </form>
+
+    <div class="bk-header__actions">
+      <button class="bk-icon-btn" aria-label="Notifications">
+        <i class="fa-regular fa-bell"></i>
+        <span class="bk-dot" aria-hidden="true"></span>
+      </button>
+      <a class="bk-icon-btn bk-icon-btn--active" href="cart.html" aria-label="Cart">
+        <i class="fa-solid fa-basket-shopping"></i>
+        <span class="bk-badge" id="cartCountBadge">0</span>
+      </a>
+      <div class="bk-profile">
+        <span class="bk-avatar">
+          <%= data.userName
+            .split(" ")
+            .map(name => name[0])
+            .join("")
+            .substring(0, 2)
+            .toUpperCase() %></span>
+        </span>
+        <span class="bk-profile__name"> <%= data.userName %></span>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- Delivery address strip -->
+<div class="bk-address-strip">
+  <div class="bk-address-strip__inner">
+    <i class="fa-solid fa-location-dot"></i>
+    <span class="bk-address-strip__text">
+      Deliver to <strong>Vishal Kumar, 713325</strong>
+      <span class="bk-address-strip__tag">HOME</span>
+      — 54, Karim Dangal, Saraswati Mandir, Nehru Road, Burnpur, Asansol
+    </span>
+    <button class="bk-address-strip__change" id="changeAddressBtn">Change</button>
+  </div>
+</div>
+
+<main class="bk-page">
+
+  <nav class="bk-breadcrumb" aria-label="Breadcrumb">
+    <a href="product-details.html">Home</a>
+    <i class="fa-solid fa-chevron-right"></i>
+    <span aria-current="page">My Cart</span>
+  </nav>
+
+  <!-- Tabs -->
+  <div class="bk-tabs" role="tablist" aria-label="Cart sections">
+    <button class="bk-tab is-active" role="tab" aria-selected="true" data-tab="cart" id="tabCart">
+      In Your Cart <span id="tabCartCount">(0)</span>
+    </button>
+    <button class="bk-tab" role="tab" aria-selected="false" data-tab="saved" id="tabSaved">
+      Saved for Later <span id="tabSavedCount">(0)</span>
+    </button>
+  </div>
+
+  <div class="bk-layout" id="cartLayout">
+
+    <div class="bk-main-col">
+
+      <!-- Cart tab panel -->
+      <section id="panelCart" class="bk-panel" role="tabpanel" aria-labelledby="tabCart">
+        <div id="cartList" class="bk-cart-list"></div>
+
+        <div id="emptyCartState" class="bk-empty" hidden>
+          <div class="bk-empty__icon"><i class="fa-solid fa-basket-shopping"></i></div>
+          <h2>Your cart is looking empty</h2>
+          <p>Fresh produce from verified farmers is waiting for you.</p>
+          <a href="product-details.html" class="bk-btn bk-btn--primary">
+            <i class="fa-solid fa-leaf"></i> Browse Crops
+          </a>
+        </div>
+      </section>
+
+      <!-- Saved for later tab panel -->
+      <section id="panelSaved" class="bk-panel" role="tabpanel" aria-labelledby="tabSaved" hidden>
+        <div id="savedList" class="bk-cart-list"></div>
+
+        <div id="emptySavedState" class="bk-empty" hidden>
+          <div class="bk-empty__icon"><i class="fa-solid fa-bookmark"></i></div>
+          <h2>Nothing saved for later</h2>
+          <p>Move items here to buy them another day, without losing your cart.</p>
+        </div>
+      </section>
+
+      <div class="bk-support-note" id="supportNote">
+        <i class="fa-solid fa-hand-holding-heart"></i>
+        <p>Every item in your cart goes straight from the farmer's field to your door. <span lang="hi">एक बीज = 100% Money</span></p>
+      </div>
+    </div>
+
+    <!-- Price Summary -->
+    <aside class="bk-summary" id="cartSummary">
+      <h2>Price Details</h2>
+      <div class="bk-summary__row">
+        <span id="summaryItemsLabel">Produce Value (0 items)</span>
+        <span id="sumProduct">₹0</span>
+      </div>
+      <div class="bk-summary__row bk-summary__row--expandable">
+        <span>Fees <i class="fa-solid fa-chevron-down"></i></span>
+        <span id="sumFeesTotal">₹0</span>
+      </div>
+      <div class="bk-summary__subrow">
+        <span>Delivery Charge</span>
+        <span id="sumDelivery">₹0</span>
+      </div>
+      <div class="bk-summary__subrow">
+        <span>Platform Fee</span>
+        <span id="sumPlatform">₹0</span>
+      </div>
+      <div class="bk-summary__subrow">
+        <span>Farmer Support Fee</span>
+        <span id="sumFarmerFee">₹0</span>
+      </div>
+      <div class="bk-summary__row bk-summary__row--savings">
+        <span>Middleman Cut Avoided</span>
+        <span id="sumSavings">− ₹0</span>
+      </div>
+      <div class="bk-summary__divider"></div>
+      <div class="bk-summary__row bk-summary__row--total">
+        <span>Total Amount</span>
+        <span id="sumTotal">₹0</span>
+      </div>
+
+      <div class="bk-savings-banner" id="savingsBanner">
+        <i class="fa-solid fa-seedling"></i>
+        <span>You will save <strong id="savingsAmount">₹0</strong> by buying direct from farmers.</span>
+      </div>
+
+      <div class="bk-secure-note">
+        <i class="fa-solid fa-shield-halved"></i>
+        <span>Safe payments. Easy returns. 100% farm-verified produce.</span>
+      </div>
+
+      <div class="bk-checkout-bar">
+        <div class="bk-checkout-bar__price">
+          <span class="bk-checkout-bar__mrp" id="checkoutMrp">₹0</span>
+          <span class="bk-checkout-bar__total" id="checkoutTotal">₹0</span>
+        </div>
+        <button id="checkoutBtn" class="bk-btn bk-btn--primary">
+          Proceed to Checkout <i class="fa-solid fa-arrow-right"></i>
+        </button>
+      </div>
+    </aside>
+  </div>
+</main>
+
+<footer class="bk-footer">
+  <p><span lang="hi">एक बीज = 100% Money</span> · सीधे किसान से • सही दाम • भरोसे के साथ</p>
+</footer>
+
+<!-- Reusable cart item template -->
+<template id="cartItemTemplate">
+  <article class="bk-cart-item">
+    <img class="bk-cart-item__img" alt="">
+    <div class="bk-cart-item__body">
+      <div class="bk-cart-item__top">
+        <div>
+          <h3 class="bk-cart-item__name"></h3>
+          <p class="bk-cart-item__seller">
+            <i class="fa-solid fa-circle-check bk-verified"></i>
+            Farmer: <strong class="bk-cart-item__seller-name"></strong> · <span class="bk-cart-item__location"></span>
+          </p>
+        </div>
+      </div>
+
+      <div class="bk-cart-item__mid">
+        <div class="bk-stepper">
+          <button class="bk-stepper__btn bk-qty-minus" aria-label="Decrease quantity">−</button>
+          <span class="bk-stepper__value bk-qty-value">1</span>
+          <button class="bk-stepper__btn bk-qty-plus" aria-label="Increase quantity">+</button>
+        </div>
+        <span class="bk-cart-item__price"></span>
+        <span class="bk-cart-item__subtotal"></span>
+      </div>
+
+      <p class="bk-cart-item__delivery"><i class="fa-solid fa-truck"></i> Delivery in 2–4 working days</p>
+
+      <div class="bk-cart-item__actions">
+        <button class="bk-item-action bk-action-save"><i class="fa-solid fa-bookmark"></i> Save for later</button>
+        <button class="bk-item-action bk-action-remove"><i class="fa-solid fa-trash-can"></i> Remove</button>
+        <button class="bk-item-action bk-action-buynow"><i class="fa-solid fa-bolt"></i> Buy this now</button>
+      </div>
+    </div>
+  </article>
+</template>
+
+<!-- Reusable saved-for-later item template -->
+<template id="savedItemTemplate">
+  <article class="bk-cart-item bk-cart-item--saved">
+    <img class="bk-cart-item__img" alt="">
+    <div class="bk-cart-item__body">
+      <h3 class="bk-cart-item__name"></h3>
+      <p class="bk-cart-item__seller">
+        <i class="fa-solid fa-circle-check bk-verified"></i>
+        Farmer: <strong class="bk-cart-item__seller-name"></strong> · <span class="bk-cart-item__location"></span>
+      </p>
+      <p class="bk-cart-item__price"></p>
+      <div class="bk-cart-item__actions">
+        <button class="bk-item-action bk-action-movetocart"><i class="fa-solid fa-basket-shopping"></i> Move to cart</button>
+        <button class="bk-item-action bk-action-remove"><i class="fa-solid fa-trash-can"></i> Remove</button>
+      </div>
+    </div>
+  </article>
+</template>
+
+
+<script src="/js/buyerJs/cart.js"></script>
+</body>
+</html>

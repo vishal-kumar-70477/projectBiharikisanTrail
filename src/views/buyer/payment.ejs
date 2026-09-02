@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Complete Payment — Bihari Kisan</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=Inter:wght@400;500;600;700;800&family=Noto+Sans+Devanagari:wght@500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<link rel="stylesheet" href="/css/buyerCss/payment.css">
+</head>
+<body>
+
+<header class="bk-header">
+  <div class="bk-header__inner">
+    <a class="bk-logo" href="/allproduct" aria-label="Bihari Kisan home">
+      <span class="bk-logo__icon"><i class="fa-solid fa-seedling"></i></span>
+      <span class="bk-logo__text">BIHARI<em>KISAN</em></span>
+    </a>
+    <div class="bk-header__lock"><i class="fa-solid fa-lock"></i> 100% Secure</div>
+  </div>
+</header>
+
+<main class="bk-page">
+
+  <ol class="bk-steps" aria-label="Checkout progress">
+    <li class="bk-step is-done"><span class="bk-step__dot"><i class="fa-solid fa-check"></i></span><span>Product</span></li>
+    <li class="bk-step is-done"><span class="bk-step__dot"><i class="fa-solid fa-check"></i></span><span>Address</span></li>
+    <li class="bk-step is-done"><span class="bk-step__dot"><i class="fa-solid fa-check"></i></span><span>Review</span></li>
+    <li class="bk-step is-active"><span class="bk-step__dot">4</span><span>Payment</span></li>
+  </ol>
+
+  <div class="bk-title-block">
+    <h1>Complete your payment</h1>
+    <p>Secure payment for your fresh farm produce</p>
+  </div>
+
+  <div class="bk-layout">
+    <div class="bk-main-col">
+
+      <!-- Payment Method List -->
+      <section class="bk-methods" role="radiogroup" aria-label="Select a payment method">
+
+        <div class="bk-method is-active" data-method="upi" role="radio" aria-checked="true" tabindex="0">
+          <span class="bk-method__icon"><i class="fa-solid fa-mobile-screen-button"></i></span>
+          <span class="bk-method__text">
+            <strong>UPI</strong>
+            <span>Pay instantly using any UPI app</span>
+          </span>
+          <span class="bk-method__radio"></span>
+        </div>
+        <div class="bk-method__panel" data-panel="upi">
+          <label for="upiId">UPI ID</label>
+          <div class="bk-input-row">
+            <input type="text" id="upiId" placeholder="yourname@upi" autocomplete="off">
+            <button type="button" class="bk-btn bk-btn--outline" id="verifyUpiBtn">Verify UPI</button>
+          </div>
+          <p class="bk-hint" id="upiHint"></p>
+        </div>
+
+        <div class="bk-method" data-method="card" role="radio" aria-checked="false" tabindex="0">
+          <span class="bk-method__icon"><i class="fa-solid fa-credit-card"></i></span>
+          <span class="bk-method__text">
+            <strong>Debit / Credit Card</strong>
+            <span>Visa, Mastercard, RuPay accepted</span>
+          </span>
+          <span class="bk-method__radio"></span>
+        </div>
+        <div class="bk-method__panel" data-panel="card" hidden>
+          <div class="bk-form-grid">
+            <div class="bk-field bk-field--full">
+              <label for="cardNumber">Card Number</label>
+              <input type="text" id="cardNumber" placeholder="1234 5678 9012 3456" inputmode="numeric" maxlength="19">
+            </div>
+            <div class="bk-field">
+              <label for="cardExpiry">Expiry Date</label>
+              <input type="text" id="cardExpiry" placeholder="MM / YY" maxlength="7">
+            </div>
+            <div class="bk-field">
+              <label for="cardCvv">CVV</label>
+              <input type="password" id="cardCvv" placeholder="•••" maxlength="3" inputmode="numeric">
+            </div>
+            <div class="bk-field bk-field--full">
+              <label for="cardName">Card Holder Name</label>
+              <input type="text" id="cardName" placeholder="Name as on card">
+            </div>
+          </div>
+          <button type="button" class="bk-btn bk-btn--outline" id="saveCardBtn">Save Card &amp; Continue</button>
+        </div>
+
+        <div class="bk-method" data-method="netbanking" role="radio" aria-checked="false" tabindex="0">
+          <span class="bk-method__icon"><i class="fa-solid fa-building-columns"></i></span>
+          <span class="bk-method__text">
+            <strong>Net Banking</strong>
+            <span>All major Indian banks supported</span>
+          </span>
+          <span class="bk-method__radio"></span>
+        </div>
+        <div class="bk-method__panel" data-panel="netbanking" hidden>
+          <label for="bankSelect">Select your bank</label>
+          <select id="bankSelect">
+            <option>State Bank of India</option>
+            <option>Punjab National Bank</option>
+            <option>Bank of Baroda</option>
+            <option>ICICI Bank</option>
+            <option>HDFC Bank</option>
+          </select>
+        </div>
+
+        <div class="bk-method" data-method="cod" role="radio" aria-checked="false" tabindex="0">
+          <span class="bk-method__icon"><i class="fa-solid fa-hand-holding-dollar"></i></span>
+          <span class="bk-method__text">
+            <strong>Cash on Delivery</strong>
+            <span>Pay when your order arrives</span>
+          </span>
+          <span class="bk-method__radio"></span>
+        </div>
+        <div class="bk-method__panel" data-panel="cod" hidden>
+          <p class="bk-hint"><i class="fa-solid fa-truck"></i> Pay when your order reaches your doorstep.</p>
+          <p class="bk-hint">COD is available for orders under ₹5,000 in your delivery area.</p>
+        </div>
+
+        <div class="bk-method" data-method="wallet" role="radio" aria-checked="false" tabindex="0">
+          <span class="bk-method__icon"><i class="fa-solid fa-wallet"></i></span>
+          <span class="bk-method__text">
+            <strong>Bihari Kisan Wallet</strong>
+            <span>Balance: ₹0.00</span>
+          </span>
+          <span class="bk-method__radio"></span>
+        </div>
+        <div class="bk-method__panel" data-panel="wallet" hidden>
+          <p class="bk-hint">Your wallet balance is too low for this order. Add money or choose another method.</p>
+        </div>
+      </section>
+    </div>
+
+    <!-- Order Summary -->
+    <aside class="bk-summary">
+      <h2>Order Summary</h2>
+      <div class="bk-summary__item">
+        <img id="itemImage" src="https://images.unsplash.com/photo-1552642986-ccb41e7059e7?q=80&w=300&auto=format&fit=crop" alt="">
+        <div>
+          <strong id="itemName">Desi Aloo</strong>
+          <span id="itemQty">5 KG</span>
+        </div>
+      </div>
+      <div class="bk-summary__divider"></div>
+      <div class="bk-summary__row"><span>Product</span><span id="sumProduct">₹1000</span></div>
+      <div class="bk-summary__row"><span>Delivery</span><span id="sumDelivery">₹40</span></div>
+      <div class="bk-summary__row"><span>Platform</span><span id="sumPlatform">₹10</span></div>
+      <div class="bk-summary__divider"></div>
+      <div class="bk-summary__row bk-summary__row--total"><span>Total</span><span id="sumTotal">₹1050</span></div>
+
+      <div class="bk-security">
+        <i class="fa-solid fa-shield-halved"></i>
+        <span>Your payment information is protected with bank-grade encryption.</span>
+      </div>
+
+      <button id="placeOrderBtn" class="bk-btn bk-btn--primary bk-btn--block">
+        <span class="bk-btn__label">Place Secure Order</span>
+      </button>
+    </aside>
+  </div>
+</main>
+
+<footer class="bk-footer">
+  <p><span lang="hi">एक बीज = 100% Money</span> · सीधे किसान से • सही दाम • भरोसे के साथ</p>
+</footer>
+
+<script src="/js/buyerJs/payment.js"></script>
+</body>
+</html>

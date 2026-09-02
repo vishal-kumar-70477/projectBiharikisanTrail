@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>My Orders | BIHARI KISAN — Buyer Dashboard</title>
+<meta name="description" content="Track your fresh farm produce orders and purchases on BIHARI KISAN." />
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="/css/buyerCss/myOrder.css" />
+</head>
+<body>
+
+<a class="skip-link" href="#main-content">Skip to orders</a>
+
+<div class="bk-app">
+
+  <aside class="bk-sidebar" id="sidebar">
+    <div class="bk-sidebar__brand">
+      <div class="bk-logo-mark" aria-hidden="true">
+        <svg class="lucide-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 9.536V7a4 4 0 0 1 4-4h1.5a.5.5 0 0 1 .5.5V5a4 4 0 0 1-4 4 4 4 0 0 0-4 4c0 2 1 3 1 5a5 5 0 0 1-1 3" /> <path d="M4 9a5 5 0 0 1 8 4 5 5 0 0 1-8-4" /> <path d="M5 21h14" /></svg>
+      </div>
+      <div class="bk-brand-text">
+        <span class="bk-brand-name">BIHARI <strong>KISAN</strong></span>
+        <span class="bk-brand-sub">Buyer Dashboard</span>
+      </div>
+    </div>
+
+    <nav class="bk-sidebar__nav" aria-label="Primary">
+      <a href="/buyerDash" class="bk-nav-link"><svg class="lucide-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="7" height="7" x="3" y="3" rx="1" /> <rect width="7" height="7" x="14" y="3" rx="1" /> <rect width="7" height="7" x="14" y="14" rx="1" /> <rect width="7" height="7" x="3" y="14" rx="1" /></svg><span>Dashboard</span></a>
+      <a href="/allproduct" class="bk-nav-link"><svg class="lucide-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 21v-5a1 1 0 0 0-1-1h-4a1 1 0 0 0-1 1v5" /> <path d="M17.774 10.31a1.12 1.12 0 0 0-1.549 0 2.5 2.5 0 0 1-3.451 0 1.12 1.12 0 0 0-1.548 0 2.5 2.5 0 0 1-3.452 0 1.12 1.12 0 0 0-1.549 0 2.5 2.5 0 0 1-3.77-3.248l2.889-4.184A2 2 0 0 1 7 2h10a2 2 0 0 1 1.653.873l2.895 4.192a2.5 2.5 0 0 1-3.774 3.244" /> <path d="M4 10.95V19a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8.05" /></svg><span>Browse Crops</span></a>
+      <a href="#" class="bk-nav-link is-active" aria-current="page"><svg class="lucide-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="8" height="4" x="8" y="2" rx="1" ry="1" /> <path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2" /> <path d="M12 11h4" /> <path d="M12 16h4" /> <path d="M8 11h.01" /> <path d="M8 16h.01" /></svg><span>My Orders</span></a>
+      <a href="#" class="bk-nav-link"><svg class="lucide-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" /> <path d="M16 3.128a4 4 0 0 1 0 7.744" /> <path d="M22 21v-2a4 4 0 0 0-3-3.87" /> <circle cx="9" cy="7" r="4" /></svg><span>Saved Sellers</span></a>
+      <a href="#" class="bk-nav-link"><svg class="lucide-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 7V4a1 1 0 0 0-1-1H5a2 2 0 0 0 0 4h15a1 1 0 0 1 1 1v4h-3a2 2 0 0 0 0 4h3a1 1 0 0 0 1-1v-2a1 1 0 0 0-1-1" /> <path d="M3 5v14a2 2 0 0 0 2 2h15a1 1 0 0 0 1-1v-4" /></svg><span>Payments</span></a>
+      <a href="#" class="bk-nav-link"><svg class="lucide-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 18V6a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2v11a1 1 0 0 0 1 1h2" /> <path d="M15 18H9" /> <path d="M19 18h2a1 1 0 0 0 1-1v-3.65a1 1 0 0 0-.22-.624l-3.48-4.35A1 1 0 0 0 17.52 8H14" /> <circle cx="17" cy="18" r="2" /> <circle cx="7" cy="18" r="2" /></svg><span>Track Delivery</span></a>
+      <a href="#" class="bk-nav-link"><svg class="lucide-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10" /> <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3" /> <path d="M12 17h.01" /></svg><span>Help &amp; Support</span></a>
+      <a href="#" class="bk-nav-link"><svg class="lucide-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9.671 4.136a2.34 2.34 0 0 1 4.659 0 2.34 2.34 0 0 0 3.319 1.915 2.34 2.34 0 0 1 2.33 4.033 2.34 2.34 0 0 0 0 3.831 2.34 2.34 0 0 1-2.33 4.033 2.34 2.34 0 0 0-3.319 1.915 2.34 2.34 0 0 1-4.659 0 2.34 2.34 0 0 0-3.32-1.915 2.34 2.34 0 0 1-2.33-4.033 2.34 2.34 0 0 0 0-3.831A2.34 2.34 0 0 1 6.35 6.051a2.34 2.34 0 0 0 3.319-1.915" /> <circle cx="12" cy="12" r="3" /></svg><span>Settings</span></a>
+    </nav>
+
+    <a href="#" class="bk-nav-link bk-nav-link--logout">
+      <svg class="lucide-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m16 17 5-5-5-5" /> <path d="M21 12H9" /> <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4" /></svg><span>Logout</span>
+    </a>
+  </aside>
+
+  <div class="bk-sidebar-overlay" id="sidebarOverlay" hidden></div>
+
+  <div class="bk-app__content">
+
+    <header class="bk-header">
+      <div class="bk-header__inner">
+
+        <button class="bk-menu-toggle" id="menuToggle" type="button" aria-label="Open menu" aria-controls="sidebar" aria-expanded="false">
+          <svg class="lucide-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 5h16" /> <path d="M4 12h16" /> <path d="M4 19h16" /></svg>
+        </button>
+
+        <div class="bk-header__search">
+          <svg class="lucide-ico bk-header__search-icon" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" ><path d="m21 21-4.34-4.34" /> <circle cx="11" cy="11" r="8" /></svg>
+          <input type="search" id="globalSearch" placeholder="Search crops, farmers, villages..." aria-label="Search crops, farmers, villages" />
+        </div>
+
+        <div class="bk-header__actions">
+          <button class="bk-icon-btn" type="button" aria-label="Notifications">
+            <svg class="lucide-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10.268 21a2 2 0 0 0 3.464 0" /> <path d="M3.262 15.326A1 1 0 0 0 4 17h16a1 1 0 0 0 .74-1.673C19.41 13.956 18 12.499 18 8A6 6 0 0 0 6 8c0 4.499-1.411 5.956-2.738 7.326" /></svg>
+            <span class="bk-badge-dot" aria-hidden="true"></span>
+          </button>
+          <button class="bk-icon-btn" type="button" aria-label="Cart">
+            <svg class="lucide-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m15 11-1 9" /> <path d="m19 11-4-7" /> <path d="M2 11h20" /> <path d="m3.5 11 1.6 7.4a2 2 0 0 0 2 1.6h9.8a2 2 0 0 0 2-1.6l1.7-7.4" /> <path d="M4.5 15.5h15" /> <path d="m5 11 4-7" /> <path d="m9 11 1 9" /></svg>
+          </button>
+          <button class="bk-profile" type="button" aria-haspopup="true" aria-expanded="false">
+            <span class="bk-avatar">RK</span>
+            <span class="bk-profile-name">Ramesh Kushwaha</span>
+            <svg class="lucide-ico bk-profile-caret" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6" /></svg>
+          </button>
+        </div>
+
+      </div>
+    </header>
+
+    <main id="main-content" class="bk-main">
+
+  <section class="bk-hero">
+    <div class="bk-hero__text">
+      <h1>My Orders</h1>
+      <p>Track your fresh farm produce orders and purchases.</p>
+    </div>
+    <div class="bk-hero__total" aria-hidden="true">
+      <div class="bk-hero__total-icon"><svg class="lucide-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22V12" /> <path d="m16 17 2 2 4-4" /> <path d="M21 11.127V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.729l7 4a2 2 0 0 0 2 .001l1.32-.753" /> <path d="M3.29 7 12 12l8.71-5" /> <path d="m7.5 4.27 8.997 5.148" /></svg></div>
+      <div class="bk-hero__total-copy">
+        <span class="bk-hero__total-label">Total Orders</span>
+        <span class="bk-hero__total-value" id="heroTotalCount">12</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="bk-stats" aria-label="Order status summary filters">
+    <button class="bk-stat-card is-active" type="button" data-stat-filter="All">
+      <span class="bk-stat-icon bk-stat-icon--all"><svg class="lucide-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="7" height="7" x="3" y="3" rx="1" /> <rect width="7" height="7" x="14" y="3" rx="1" /> <rect width="7" height="7" x="14" y="14" rx="1" /> <rect width="7" height="7" x="3" y="14" rx="1" /></svg></span>
+      <span class="bk-stat-info">
+        <span class="bk-stat-count" data-count="All">12</span>
+        <span class="bk-stat-label">All Orders</span>
+      </span>
+    </button>
+    <button class="bk-stat-card" type="button" data-stat-filter="Preparing">
+      <span class="bk-stat-icon bk-stat-icon--processing"><svg class="lucide-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2v4" /> <path d="m16.2 7.8 2.9-2.9" /> <path d="M18 12h4" /> <path d="m16.2 16.2 2.9 2.9" /> <path d="M12 18v4" /> <path d="m4.9 19.1 2.9-2.9" /> <path d="M2 12h4" /> <path d="m4.9 4.9 2.9 2.9" /></svg></span>
+      <span class="bk-stat-info">
+        <span class="bk-stat-count" data-count="Preparing">2</span>
+        <span class="bk-stat-label">Processing</span>
+      </span>
+    </button>
+    <button class="bk-stat-card" type="button" data-stat-filter="Out for Delivery">
+      <span class="bk-stat-icon bk-stat-icon--transit"><svg class="lucide-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 18V6a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2v11a1 1 0 0 0 1 1h2" /> <path d="M15 18H9" /> <path d="M19 18h2a1 1 0 0 0 1-1v-3.65a1 1 0 0 0-.22-.624l-3.48-4.35A1 1 0 0 0 17.52 8H14" /> <circle cx="17" cy="18" r="2" /> <circle cx="7" cy="18" r="2" /></svg></span>
+      <span class="bk-stat-info">
+        <span class="bk-stat-count" data-count="Out for Delivery">1</span>
+        <span class="bk-stat-label">Out for Delivery</span>
+      </span>
+    </button>
+    <button class="bk-stat-card" type="button" data-stat-filter="Delivered">
+      <span class="bk-stat-icon bk-stat-icon--delivered"><svg class="lucide-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21.801 10A10 10 0 1 1 17 3.335" /> <path d="m9 11 3 3L22 4" /></svg></span>
+      <span class="bk-stat-info">
+        <span class="bk-stat-count" data-count="Delivered">8</span>
+        <span class="bk-stat-label">Delivered</span>
+      </span>
+    </button>
+    <button class="bk-stat-card" type="button" data-stat-filter="Cancelled">
+      <span class="bk-stat-icon bk-stat-icon--cancelled"><svg class="lucide-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10" /> <path d="m15 9-6 6" /> <path d="m9 9 6 6" /></svg></span>
+      <span class="bk-stat-info">
+        <span class="bk-stat-count" data-count="Cancelled">1</span>
+        <span class="bk-stat-label">Cancelled</span>
+      </span>
+    </button>
+  </section>
+
+  <section class="bk-toolbar" aria-label="Filter and sort orders">
+    <div class="bk-toolbar__search">
+      <svg class="lucide-ico" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" ><path d="m21 21-4.34-4.34" /> <circle cx="11" cy="11" r="8" /></svg>
+      <input type="search" id="orderSearch" placeholder="Search by Order ID, product or farmer..." aria-label="Search orders" />
+    </div>
+
+    <div class="bk-toolbar__selects">
+      <label class="bk-select">
+        <span class="bk-select__label">Status</span>
+        <select id="statusFilter" aria-label="Filter by status">
+          <option value="All">All Orders</option>
+          <option value="Confirmed">Confirmed</option>
+          <option value="Preparing">Preparing</option>
+          <option value="Out for Delivery">Out for Delivery</option>
+          <option value="Delivered">Delivered</option>
+          <option value="Cancelled">Cancelled</option>
+        </select>
+      </label>
+
+      <label class="bk-select">
+        <span class="bk-select__label">Date</span>
+        <select id="dateFilter" aria-label="Filter by date">
+          <option value="All">All Time</option>
+          <option value="30">Last 30 Days</option>
+          <option value="90">Last 3 Months</option>
+          <option value="year">This Year</option>
+        </select>
+      </label>
+
+      <label class="bk-select">
+        <span class="bk-select__label">Sort</span>
+        <select id="sortOrder" aria-label="Sort orders">
+          <option value="newest">Newest First</option>
+          <option value="oldest">Oldest First</option>
+          <option value="amount-high">Amount: High to Low</option>
+          <option value="amount-low">Amount: Low to High</option>
+        </select>
+      </label>
+    </div>
+  </section>
+
+  <section class="bk-orders" aria-label="Your orders">
+    <div id="loadingState" class="bk-loading">
+      <span class="bk-spinner" aria-hidden="true"></span>
+      <span>Loading your orders...</span>
+    </div>
+
+    <div id="ordersList" class="bk-orders__list"></div>
+
+    <div id="emptyState" class="bk-empty" hidden>
+      <div class="bk-empty__icon" id="emptyStateIcon"><svg class="lucide-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22V12" /> <path d="M20.27 18.27 22 20" /> <path d="M21 10.498V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.729l7 4a2 2 0 0 0 2 .001l.98-.559" /> <path d="M3.29 7 12 12l8.71-5" /> <path d="m7.5 4.27 8.997 5.148" /> <circle cx="18.5" cy="16.5" r="2.5" /></svg></div>
+      <h3 id="emptyStateHeading">No orders found</h3>
+      <p id="emptyStateMessage">Try changing your filters or search for another order.</p>
+      <button class="bk-btn bk-btn--primary" id="clearFiltersBtn" type="button">Clear Filters</button>
+    </div>
+
+    <div class="bk-load-more-wrap">
+      <button class="bk-btn bk-btn--outline" id="loadMoreBtn" type="button">Load More Orders</button>
+    </div>
+  </section>
+
+</main>
+
+  </div>
+</div>
+
+<template id="orderCardTemplate">
+  <article class="bk-order-card">
+    <header class="bk-order-card__top">
+      <div class="bk-order-card__id-wrap">
+        <span class="bk-order-card__id"></span>
+        <span class="bk-order-card__date"></span>
+      </div>
+      <span class="bk-status-badge"></span>
+    </header>
+
+    <div class="bk-order-card__body">
+      <div class="bk-order-card__product">
+        <div class="bk-product-img">
+          <svg class="lucide-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 22 16 8" /> <path d="M3.47 12.53 5 11l1.53 1.53a3.5 3.5 0 0 1 0 4.94L5 19l-1.53-1.53a3.5 3.5 0 0 1 0-4.94Z" /> <path d="M7.47 8.53 9 7l1.53 1.53a3.5 3.5 0 0 1 0 4.94L9 15l-1.53-1.53a3.5 3.5 0 0 1 0-4.94Z" /> <path d="M11.47 4.53 13 3l1.53 1.53a3.5 3.5 0 0 1 0 4.94L13 11l-1.53-1.53a3.5 3.5 0 0 1 0-4.94Z" /> <path d="M20 2h2v2a4 4 0 0 1-4 4h-2V6a4 4 0 0 1 4-4Z" /> <path d="M11.47 17.47 13 19l-1.53 1.53a3.5 3.5 0 0 1-4.94 0L5 19l1.53-1.53a3.5 3.5 0 0 1 4.94 0Z" /> <path d="M15.47 13.47 17 15l-1.53 1.53a3.5 3.5 0 0 1-4.94 0L9 15l1.53-1.53a3.5 3.5 0 0 1 4.94 0Z" /> <path d="M19.47 9.47 21 11l-1.53 1.53a3.5 3.5 0 0 1-4.94 0L13 11l1.53-1.53a3.5 3.5 0 0 1 4.94 0Z" /></svg>
+        </div>
+        <div class="bk-product-info">
+          <h3 class="bk-product-name"></h3>
+          <p class="bk-product-qty"></p>
+          <div class="bk-farmer-row">
+            <svg class="lucide-ico bk-farmer-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="5" /> <path d="M20 21a8 8 0 0 0-16 0" /></svg>
+            <span class="bk-farmer-name"></span>
+            <span class="bk-verified-badge" title="Verified Farmer">
+              <svg class="lucide-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.85 8.62a4 4 0 0 1 4.78-4.77 4 4 0 0 1 6.74 0 4 4 0 0 1 4.78 4.78 4 4 0 0 1 0 6.74 4 4 0 0 1-4.77 4.78 4 4 0 0 1-6.75 0 4 4 0 0 1-4.78-4.77 4 4 0 0 1 0-6.76Z" /> <path d="m9 12 2 2 4-4" /></svg> Verified Farmer
+            </span>
+          </div>
+          <div class="bk-farmer-location">
+            <svg class="lucide-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0" /> <circle cx="12" cy="10" r="3" /></svg>
+            <span class="bk-location-text"></span>
+          </div>
+        </div>
+      </div>
+
+      <div class="bk-order-card__amount">
+        <span class="bk-amount-label">Total Amount</span>
+        <span class="bk-amount-value"></span>
+        <span class="bk-payment-info"></span>
+      </div>
+    </div>
+
+    <div class="bk-tracker-wrap">
+      <ol class="bk-tracker"></ol>
+      <div class="bk-delivery-note"></div>
+    </div>
+
+    <div class="bk-cancelled-note" hidden>
+      <svg class="lucide-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10" /> <path d="M12 16v-4" /> <path d="M12 8h.01" /></svg>
+      <span>This order was cancelled.</span>
+    </div>
+
+    <footer class="bk-order-card__actions"></footer>
+  </article>
+</template>
+
+<div class="bk-modal-overlay" id="trackModal" hidden>
+  <div class="bk-modal" role="dialog" aria-modal="true" aria-labelledby="trackModalTitle">
+    <div class="bk-modal__header">
+      <h2 id="trackModalTitle">Track Order</h2>
+      <button class="bk-modal__close" type="button" data-close-modal="trackModal" aria-label="Close">
+        <svg class="lucide-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 6 6 18" /> <path d="m6 6 12 12" /></svg>
+      </button>
+    </div>
+    <div class="bk-modal__body" id="trackModalBody"></div>
+  </div>
+</div>
+
+<div class="bk-modal-overlay" id="detailsModal" hidden>
+  <div class="bk-modal" role="dialog" aria-modal="true" aria-labelledby="detailsModalTitle">
+    <div class="bk-modal__header">
+      <h2 id="detailsModalTitle">Order Details</h2>
+      <button class="bk-modal__close" type="button" data-close-modal="detailsModal" aria-label="Close">
+        <svg class="lucide-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 6 6 18" /> <path d="m6 6 12 12" /></svg>
+      </button>
+    </div>
+    <div class="bk-modal__body" id="detailsModalBody"></div>
+  </div>
+</div>
+
+<div class="bk-modal-overlay" id="cancelModal" hidden>
+  <div class="bk-modal bk-modal--small" role="alertdialog" aria-modal="true" aria-labelledby="cancelModalTitle">
+    <div class="bk-modal__header">
+      <h2 id="cancelModalTitle">Cancel this order?</h2>
+      <button class="bk-modal__close" type="button" data-close-modal="cancelModal" aria-label="Close">
+        <svg class="lucide-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 6 6 18" /> <path d="m6 6 12 12" /></svg>
+      </button>
+    </div>
+    <div class="bk-modal__body">
+      <p class="bk-cancel-copy">Are you sure you want to cancel this order? This action cannot be undone.</p>
+      <div class="bk-modal__actions">
+        <button class="bk-btn bk-btn--outline" type="button" data-close-modal="cancelModal">Keep Order</button>
+        <button class="bk-btn bk-btn--danger" type="button" id="confirmCancelBtn">Yes, Cancel Order</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="bk-toast" id="toast" role="status" aria-live="polite" hidden>
+  <svg class="lucide-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10" /> <path d="m9 12 2 2 4-4" /></svg>
+  <span id="toastMessage"></span>
+</div>
+
+<script src="/js/buyerJs/myOrder.js" defer></script>
+</body>
+</html>

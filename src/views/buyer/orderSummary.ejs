@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Review Order — Bihari Kisan</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=Inter:wght@400;500;600;700;800&family=Noto+Sans+Devanagari:wght@500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<link rel="stylesheet" href="css/buyerCss/orderSummary.css">
+</head>
+<body>
+
+<header class="bk-header">
+  <div class="bk-header__inner">
+    <a class="bk-logo" href="product-details.html" aria-label="Bihari Kisan home">
+      <span class="bk-logo__icon"><i class="fa-solid fa-seedling"></i></span>
+      <span class="bk-logo__text">BIHARI<em>KISAN</em></span>
+    </a>
+    <div class="bk-header__actions">
+      <button class="bk-icon-btn" aria-label="Notifications"><i class="fa-regular fa-bell"></i></button>
+      <button class="bk-icon-btn" aria-label="Cart"><i class="fa-solid fa-basket-shopping"></i></button>
+      <span class="bk-avatar">
+
+         <%= data.userName
+            .split(" ")
+            .map(name => name[0])
+            .join("")
+            .substring(0, 2)
+            .toUpperCase() %>
+      </span>
+    </div>
+  </div>
+</header>
+
+<main class="bk-page">
+
+  <ol class="bk-steps" aria-label="Checkout progress">
+    <li class="bk-step is-done"><span class="bk-step__dot"><i class="fa-solid fa-check"></i></span><span>Product</span></li>
+    <li class="bk-step is-done"><span class="bk-step__dot"><i class="fa-solid fa-check"></i></span><span>Address</span></li>
+    <li class="bk-step is-active"><span class="bk-step__dot">3</span><span>Review</span></li>
+    <li class="bk-step"><span class="bk-step__dot">4</span><span>Payment</span></li>
+  </ol>
+
+  <h1 class="bk-page__title">Review your order</h1>
+
+  <div class="bk-layout">
+    <div class="bk-main-col">
+
+    <!-- Delivery Address -->
+<section class="bk-card bk-address-card">
+
+    <div class="bk-card__head">
+        <h2>
+            <i class="fa-solid fa-location-dot"></i>
+            Delivery Address
+        </h2>
+
+        <div class="bk-card__actions">
+
+            <button
+                class="bk-link-btn"
+                id="changeAddressBtn"
+                type="button">
+                Change Address
+            </button>
+
+            <button
+                class="bk-link-btn bk-add-address-btn"
+                id="addAddressBtn"
+                type="button">
+                <i class="fa-solid fa-plus"></i>
+                Add New Address
+            </button>
+
+        </div>
+    </div>
+
+
+    <!-- DYNAMIC ADDRESS WILL APPEAR HERE -->
+    <div id="addressList" class="address-list">
+
+        <div class="address-loading">
+            <i class="fa-solid fa-spinner fa-spin"></i>
+            Loading address...
+        </div>
+
+    </div>
+
+
+    <!-- ADDRESS MODAL -->
+    <div
+        id="addressModal"
+        class="address-modal"
+        style="display:none;">
+
+        <div class="address-modal__box">
+
+            <div class="address-modal__head">
+
+                <div>
+                    <span class="address-modal__eyebrow">
+                        Delivery details
+                    </span>
+
+                    <h3 id="addressModalTitle">
+                        Add New Address
+                    </h3>
+                </div>
+
+                <button
+                    type="button"
+                    id="closeAddressModal"
+                    class="address-modal__close"
+                    aria-label="Close">
+                    &times;
+                </button>
+
+            </div>
+
+
+            <form id="addressForm">
+
+                <div class="address-form-grid">
+
+                    <div class="address-field address-field--full">
+
+                        <label for="addressVillage">
+                            Village / Area
+                        </label>
+
+                        <div class="address-input-wrap">
+                            <i class="fa-solid fa-house"></i>
+
+                            <input
+                                type="text"
+                                id="addressVillage"
+                                name="village"
+                                placeholder="Enter village / area"
+                                required>
+                        </div>
+
+                    </div>
+
+
+                    <div class="address-field">
+
+                        <label for="addressDistrict">
+                            District
+                        </label>
+
+                        <div class="address-input-wrap">
+                            <i class="fa-solid fa-location-dot"></i>
+
+                            <input
+                                type="text"
+                                id="addressDistrict"
+                                name="district"
+                                placeholder="Enter district"
+                                required>
+                        </div>
+
+                    </div>
+
+
+                    <div class="address-field">
+
+                        <label for="addressState">
+                            State
+                        </label>
+
+                        <div class="address-input-wrap">
+                            <i class="fa-solid fa-map"></i>
+
+                            <input
+                                type="text"
+                                id="addressState"
+                                name="state"
+                                placeholder="Enter state"
+                                required>
+                        </div>
+
+                    </div>
+
+
+                    <div class="address-field address-field--full">
+
+                        <label for="addressPincode">
+                            Pincode
+                        </label>
+
+                        <div class="address-input-wrap">
+                            <i class="fa-solid fa-location-crosshairs"></i>
+
+                            <input
+                                type="text"
+                                id="addressPincode"
+                                name="pincode"
+                                placeholder="Enter 6-digit pincode"
+                                maxlength="6"
+                                inputmode="numeric"
+                                pattern="[0-9]{6}"
+                                required>
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <button
+                    type="submit"
+                    class="bk-btn bk-btn--primary bk-btn--block">
+
+                    <i class="fa-solid fa-check"></i>
+                    Save Address
+
+                </button>
+
+            </form>
+
+        </div>
+    </div>
+
+</section>
+      <!-- Order Item -->
+      <section class="bk-card">
+        <div class="bk-card__head">
+          <h2><i class="fa-solid fa-basket-shopping"></i> Order Item</h2>
+        </div>
+        <div class="bk-item" id="orderItem">
+          <img id="itemImage" src="https://images.unsplash.com/photo-1552642986-ccb41e7059e7?q=80&w=300&auto=format&fit=crop" alt="Desi Aloo">
+          <div class="bk-item__body">
+            <h3 id="itemName">Desi Aloo</h3>
+            <p class="bk-item__seller">
+              <i class="fa-solid fa-circle-check bk-verified"></i>
+              Farmer: <strong id="itemSeller">Piyush Kumar</strong> · <span id="itemLocation">Bihar</span>
+            </p>
+            <p class="bk-item__qty">Quantity: <strong id="itemQty">5 KG</strong> &nbsp;·&nbsp; Price: <strong id="itemPrice">₹200 / KG</strong></p>
+            <p class="bk-item__delivery"><i class="fa-solid fa-truck"></i> Expected delivery: 2–4 working days</p>
+          </div>
+          <div class="bk-item__subtotal">
+            <span>Subtotal</span>
+            <strong id="itemSubtotal">₹1000</strong>
+          </div>
+        </div>
+      </section>
+
+      <div class="bk-support-note">
+        <i class="fa-solid fa-hand-holding-heart"></i>
+        <p>You are supporting a local farmer with this purchase. <span lang="hi">एक बीज = 100% Money</span></p>
+      </div>
+    </div>
+
+    <!-- Price Summary -->
+    <aside class="bk-summary">
+      <h2>Price Details</h2>
+      <div class="bk-summary__row">
+        <span>Product Price</span>
+        <span id="sumProduct">₹1000</span>
+      </div>
+      <div class="bk-summary__row">
+        <span>Delivery Charge</span>
+        <span id="sumDelivery"></span>
+      </div>
+      <div class="bk-summary__row">
+        <span>Platform Fee</span>
+        <span id="sumPlatform"></span>
+      </div>
+      <div class="bk-summary__row">
+        <span>Farmer Support Fee</span>
+        <span id="sumFarmerFee"></span>
+      </div>
+      <div class="bk-summary__divider"></div>
+      <div class="bk-summary__row bk-summary__row--total">
+        <span>Total Amount</span>
+        <span id="sumTotal">₹1055</span>
+      </div>
+      <div class="bk-summary__banner">
+        <i class="fa-solid fa-seedling"></i>
+        100% of the farmer support fee goes directly to the grower.
+      </div>
+      <button id="continueBtn" class="bk-btn bk-btn--primary bk-btn--block">
+        Continue to Payment <i class="fa-solid fa-arrow-right"></i>
+      </button>
+    </aside>
+  </div>
+</main>
+
+<footer class="bk-footer">
+  <p><span lang="hi">एक बीज = 100% Money</span> · सीधे किसान से • सही दाम • भरोसे के साथ</p>
+</footer>
+
+<script src="js/buyerJs/orderSummary.js"></script>
+</body>
+</html>
