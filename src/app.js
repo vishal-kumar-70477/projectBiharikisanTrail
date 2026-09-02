@@ -61,8 +61,8 @@ app.get("/farmerProduct", async (req, res) => {
         res.render("farmer/farmerProduct", { data });
 
     } catch (error) {
-        console.log(error);
-        res.redirect("/");
+        console.log(error)
+        res.redirect("/")
     }
 });
 
