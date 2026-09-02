@@ -26,11 +26,11 @@ app.use("/biharikisan/seller",productsRouter);
 app.use("/biharikisan/buyer",buyerFeaturesRouter);
 
 app.get("/dash/register", (req, res) => {
-    res.render("login/register");
+    res.render("login/register")
 });
 
 app.get("/", (req, res) => {
-    res.render("dashboard/dash")
+    res.render("dashboard/dash");
 });
 
 // farmer product upoload
@@ -61,8 +61,8 @@ app.get("/farmerProduct", async (req, res) => {
         res.render("farmer/farmerProduct", { data });
 
     } catch (error) {
-        console.log(error)
-        res.redirect("/")
+        console.log(error);
+        res.redirect("/");
     }
 });
 
