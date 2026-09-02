@@ -62,7 +62,7 @@ app.get("/farmerProduct", async (req, res) => {
 
     } catch (error) {
         console.log(error)
-        res.redirect("/")
+        res.redirect("/");
     }
 });
 
